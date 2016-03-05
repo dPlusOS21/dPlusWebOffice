@@ -1,0 +1,21 @@
+#transition.conf
+
+game_name = "Dofus"
+update.game.id = "dofus2"
+
+update.projects = ["transition", "game"]
+
+if equals(sys.osname, "windows") {
+     application_path = "${root}/Dofus.exe"
+     include "transition/transition.ici"
+     include "app/dofus.ici"
+}
+else if equals(sys.osname, "linux") {
+     include "transition/transition.ici"
+     include "share/dofus.ici"
+}
+else if equals(sys.osname, "mac") {
+     include "Updater Dofus.app/transition.ici"
+     include "Dofus.app/Contents/Resources/dofus.ici"
+}
+
