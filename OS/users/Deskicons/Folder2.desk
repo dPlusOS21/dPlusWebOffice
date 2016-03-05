@@ -1,0 +1,21 @@
+<table id="IDFolder2" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMFolder2" src="./icons/img/Folder2.png" style="width: 50px; height: 50px;"; title="Folder2 Window" onclick="abilita('IDTXTFolder2');" onDblClick="Folder2();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTFolder2" name="IDNAMEFolder2" value="Folder2" disabled=true style="text-align: center;" onblur="disabilita('IDTXTFolder2');" onDblClick="modifica('IDTXTFolder2');" size="8" maxlength=8 ></td></tr></tbody></table>
+function Folder2(){
+ var winFolder2 = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " Folder2", width:500, height:300, top: 0, left:0}); 
+     winFolder2.setURL("http://justbeamit.com/");
+     winFolder2.setStatusBar("Folder2");
+     winFolder2.showCenter();
+     winFolder2.show();
+}
+  new Draggable("IDFolder2",{handle:"Folder2",revert:function(element){}});
+
+IDFolder2 = new ContextMenu();
+	IDFolder2.addItem("apri",   "Apri",   Folder2, "_images/application_go.png");
+	IDFolder2.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDFolder2.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDFolder2.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDFolder2.addSeparator();
+	IDFolder2.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDFolder2.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDFolder2.register("IDFolder2");

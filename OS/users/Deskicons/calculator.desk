@@ -1,0 +1,22 @@
+<table id="IDcalculator" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMcalculator" src="./icons/icons/calculator.png" style="width: 50px; height: 50px;"; title="calculator Window" onclick="abilita('IDTXTcalculator');" onDblClick="calculator();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTcalculator" name="IDNAMEcalculator" value="calculator" disabled=true style="text-align: center;" onblur="disabilita('IDTXTcalculator');" onDblClick="modifica('IDTXTcalculator');" size="8" maxlength=8 ></td></tr></tbody></table>
+function calculator(){
+ var wincalculator = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " calculator", width:550, height:350, top: 0, left:0}); 
+     wincalculator.setURL("applications/calcolatrice/esempio.htm");
+     wincalculator.setStatusBar("calculator");
+//     wincalculator.showCenter();
+     wincalculator.show();
+}
+  new Draggable("IDcalculator",{handle:"calculator",revert:function(element){}});
+
+IDcalculator = new ContextMenu();
+	IDcalculator.addItem("apri",   "Apri",   calculator, "_images/application_go.png");
+	IDcalculator.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDcalculator.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDcalculator.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDcalculator.addSeparator();
+	IDcalculator.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDcalculator.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDcalculator.register("IDcalculator");
+

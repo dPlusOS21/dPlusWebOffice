@@ -1,0 +1,2 @@
+localStorage.setItem('wallpaper', '../../wallpaper/wallpapers-computers.jpg');
+

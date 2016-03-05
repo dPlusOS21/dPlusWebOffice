@@ -1,0 +1,22 @@
+<table id="IDDPlusImages" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMDPlusImages" src="./icons/icons/DPlusImages.png" style="width: 50px; height: 50px;"; title="DPlusImages Window" onclick="abilita('IDTXTDPlusImages');" onDblClick="DPlusImages();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTDPlusImages" name="IDNAMEDPlusImages" value="DPlusImages" disabled=true style="text-align: center;" onblur="disabilita('IDTXTDPlusImages');" onDblClick="modifica('IDTXTDPlusImages');" size="8" maxlength=8 ></td></tr></tbody></table>
+function DPlusImages(){
+ var winDPlusImages = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " DPlusImages", width:500, height:300, top: 0, left:0}); 
+     winDPlusImages.setURL("applications/foto/index.php");
+     winDPlusImages.setStatusBar("DPlusImages");
+//   winDPlusImages.showCenter();
+     winDPlusImages.show();
+}
+  new Draggable("IDDPlusImages",{handle:"DPlusImages",revert:function(element){}});
+
+IDDPlusImages = new ContextMenu();
+	IDDPlusImages.addItem("apri",   "Apri",   DPlusImages, "_images/application_go.png");
+	IDDPlusImages.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDDPlusImages.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDDPlusImages.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDDPlusImages.addSeparator();
+	IDDPlusImages.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDDPlusImages.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDDPlusImages.register("IDDPlusImages");
+

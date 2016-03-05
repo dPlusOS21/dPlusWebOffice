@@ -1,0 +1,7 @@
+<?  $user="test";  ?>
+<?  $user_password="2f6c2404198add983753e94fc24e752f";  ?>
+<?  $user_email="a@a.uk";  ?>
+<?  $user_avatar="hack-daniel.png";  ?>
+<?  $user_lang="en - english";  ?>
+<?  $quotamax="5120000";  ?>
+<?  $quotacurrent="26863840";  ?>

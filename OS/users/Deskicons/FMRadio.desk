@@ -1,0 +1,21 @@
+<table id="IDFMRadio" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMFMRadio" src="./icons/icons/FMRadio.png" style="width: 50px; height: 50px;"; title="FMRadio Window" onclick="abilita('IDTXTFMRadio');" onDblClick="FMRadio();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTFMRadio" name="IDNAMEFMRadio" value="FMRadio" disabled=true style="text-align: center;" onblur="disabilita('IDTXTFMRadio');" onDblClick="modifica('IDTXTFMRadio');" size="8" maxlength=8 ></td></tr></tbody></table>
+function FMRadio(){
+ var winFMRadio = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " FMRadio", width:500, height:300, top: 0, left:0}); 
+     winFMRadio.setURL("http://y-tunes.com/");
+     winFMRadio.setStatusBar("FMRadio");
+//   winFMRadio.showCenter();
+     winFMRadio.show();
+}
+  new Draggable("IDFMRadio",{handle:"FMRadio",revert:function(element){}});
+
+IDFMRadio = new ContextMenu();
+	IDFMRadio.addItem("apri",   "Apri",   FMRadio, "_images/application_go.png");
+	IDFMRadio.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDFMRadio.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDFMRadio.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDFMRadio.addSeparator();
+	IDFMRadio.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDFMRadio.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDFMRadio.register("IDFMRadio");

@@ -1,0 +1,21 @@
+<table id="IDplayer" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMplayer" src="./icons/icons/player.png" style="width: 50px; height: 50px;"; title="player Window" onclick="abilita('IDTXTplayer');" onDblClick="player();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTplayer" name="IDNAMEplayer" value="player" disabled=true style="text-align: center;" onblur="disabilita('IDTXTplayer');" onDblClick="modifica('IDTXTplayer');" size="8" maxlength=8 ></td></tr></tbody></table>
+function player(){
+ var winplayer = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " player", width:500, height:300, top: 0, left:0}); 
+     winplayer.setURL("http://toogl.es/#/browse");
+     winplayer.setStatusBar("player");
+//   winplayer.showCenter();
+     winplayer.show();
+}
+  new Draggable("IDplayer",{handle:"player",revert:function(element){}});
+
+IDplayer = new ContextMenu();
+	IDplayer.addItem("apri",   "Apri",   player, "_images/application_go.png");
+	IDplayer.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDplayer.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDplayer.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDplayer.addSeparator();
+	IDplayer.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDplayer.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDplayer.register("IDplayer");

@@ -1,0 +1,22 @@
+<table id="IDsystempanel" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMsystempanel" src="./icons/icons/systempanel.png" style="width: 50px; height: 50px;"; title="systempanel Window" onclick="abilita('IDTXTsystempanel');" onDblClick="systempanel();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTsystempanel" name="IDNAMEsystempanel" value="systempanel" disabled=true style="text-align: center;" onblur="disabilita('IDTXTsystempanel');" onDblClick="modifica('IDTXTsystempanel');" size="8" maxlength=8 ></td></tr></tbody></table>
+function systempanel(){
+ var winsystempanel = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " systempanel", width:500, height:300, top: 0, left:0}); 
+     winsystempanel.setURL("applications/system/phpsysinfo/index.php");
+     winsystempanel.setStatusBar("systempanel");
+//     winsystempanel.showCenter();
+     winsystempanel.show();
+}
+  new Draggable("IDsystempanel",{handle:"systempanel",revert:function(element){}});
+
+IDsystempanel = new ContextMenu();
+	IDsystempanel.addItem("apri",   "Apri",   systempanel, "_images/application_go.png");
+	IDsystempanel.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDsystempanel.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDsystempanel.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDsystempanel.addSeparator();
+	IDsystempanel.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDsystempanel.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDsystempanel.register("IDsystempanel");
+

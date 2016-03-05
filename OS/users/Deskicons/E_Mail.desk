@@ -1,0 +1,21 @@
+<table id="IDE_Mail" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IME_Mail" src="./icons/img/E_Mail.png" style="width: 50px; height: 50px;"; title="E_Mail Window" onclick="abilita('IDTXTE_Mail');" onDblClick="E_Mail();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTE_Mail" name="IDNAMEE_Mail" value="E_Mail" disabled=true style="text-align: center;" onblur="disabilita('IDTXTE_Mail');" onDblClick="modifica('IDTXTE_Mail');" size="8" maxlength=8 ></td></tr></tbody></table>
+function E_Mail(){
+ var winE_Mail = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " E_Mail", width:500, height:300, top: 0, left:0}); 
+     winE_Mail.setURL("https://mail.zoho.com/biz/index.do");
+     winE_Mail.setStatusBar("E_Mail");
+     winE_Mail.showCenter();
+     winE_Mail.show();
+}
+  new Draggable("IDE_Mail",{handle:"E_Mail",revert:function(element){}});
+
+IDE_Mail = new ContextMenu();
+	IDE_Mail.addItem("apri",   "Apri",   E_Mail, "_images/application_go.png");
+	IDE_Mail.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDE_Mail.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDE_Mail.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDE_Mail.addSeparator();
+	IDE_Mail.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDE_Mail.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDE_Mail.register("IDE_Mail");

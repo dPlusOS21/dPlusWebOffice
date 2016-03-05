@@ -1,0 +1,2 @@
+localStorage.setItem('wallpaper', '../../wallpaper/Eclissi_anulare.jpg');
+

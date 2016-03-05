@@ -1,0 +1,72 @@
+localStorage.setItem('IDadobey', '0px');
+localStorage.setItem('IDadobex', '0px');
+
+localStorage.setItem('IDPainty', '386px');
+localStorage.setItem('IDPaintx', '-77px');
+
+localStorage.setItem('IDsqldesigny', '590px');
+localStorage.setItem('IDsqldesignx', '-171px');
+
+localStorage.setItem('IDnotepady', '189px');
+localStorage.setItem('IDnotepadx', '-256px');
+
+localStorage.setItem('IDCDy', '13px');
+localStorage.setItem('IDCDx', '332px');
+
+localStorage.setItem('IDdownloadsy', '225px');
+localStorage.setItem('IDdownloadsx', '1372px');
+
+localStorage.setItem('IDFMRadioy', '2px');
+localStorage.setItem('IDFMRadiox', '-427px');
+
+localStorage.setItem('IDfilmsy', '413px');
+localStorage.setItem('IDfilmsx', '1200px');
+
+localStorage.setItem('IDmonitory', '29px');
+localStorage.setItem('IDmonitorx', '1109px');
+
+localStorage.setItem('IDFolder2y', '10px');
+localStorage.setItem('IDFolder2x', '365px');
+
+localStorage.setItem('IDcalculatory', '509px');
+localStorage.setItem('IDcalculatorx', '842px');
+
+localStorage.setItem('IDapps_readery', '284px');
+localStorage.setItem('IDapps_readerx', '-954px');
+
+localStorage.setItem('IDapps_docsy', '489px');
+localStorage.setItem('IDapps_docsx', '-1037px');
+
+localStorage.setItem('IDsystempanely', '126px');
+localStorage.setItem('IDsystempanelx', '672px');
+
+localStorage.setItem('IDtodoy', '359px');
+localStorage.setItem('IDtodox', '230px');
+
+localStorage.setItem('IDE_Maily', '11px');
+localStorage.setItem('IDE_Mailx', '-265px');
+
+localStorage.setItem('IDtalky', '189px');
+localStorage.setItem('IDtalkx', '-1285px');
+
+localStorage.setItem('IDdropboxy', '2px');
+localStorage.setItem('IDdropboxx', '-1287px');
+
+localStorage.setItem('IDMy_Computery', '11px');
+localStorage.setItem('IDMy_Computerx', '-984px');
+
+localStorage.setItem('IDAccessy', '813px');
+localStorage.setItem('IDAccessx', '-1644px');
+
+localStorage.setItem('IDbrowsery', '712px');
+localStorage.setItem('IDbrowserx', '-1734px');
+
+localStorage.setItem('IDemaily', '11px');
+localStorage.setItem('IDemailx', '-881px');
+
+localStorage.setItem('IDcachematey', '691px');
+localStorage.setItem('IDcachematex', '1800px');
+
+localStorage.setItem('IDcooliris_mediay', '427px');
+localStorage.setItem('IDcooliris_mediax', '1720px');
+

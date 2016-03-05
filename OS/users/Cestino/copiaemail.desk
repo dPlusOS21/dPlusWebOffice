@@ -1,0 +1,22 @@
+<table id="IDcopiaemail" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px"><tbody>
+<tr><td style="text-align: center;"><img id="IMcopiaemail" src="./icons/icons/email" style="width: 50px; height: 50px;"; title="copiaemail Window" onclick="abilita('IDTXTcopiaemail');" onDblClick="copiaemail();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTcopiaemail" name="IDNAMEcopiaemail" value="copiaemail" disabled=true style="text-align: center;" onblur="disabilita('IDTXTcopiaemail');" onDblClick="modifica('IDTXTcopiaemail');" size="8" maxlength=8 ></td></tr></tbody></table>
+function copiaemail(){
+ var wincopiaemail = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " copiaemail", width:500, height:300, top: 0, left:0});
+     wincopiaemail.setStatusBar("copiaemail");
+     wincopiaemail("applications/atmailopen/index.php");
+     wincopiaemail.showCenter();
+     wincopiaemail.show();
+}
+  new Draggable("IDcopiaemail",{handle:"copiaemail",revert:function(element){}});
+
+IDcopiaemail = new ContextMenu();
+	IDcopiaemail.addItem("apri",   "Apri",   copiaemail, "_images/application_go.png");
+	IDcopiaemail.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDcopiaemail.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDcopiaemail.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDcopiaemail.addSeparator();
+	IDcopiaemail.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDcopiaemail.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDcopiaemail.register("IDcopiaemail");
+

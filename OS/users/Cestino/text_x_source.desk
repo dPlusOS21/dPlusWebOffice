@@ -1,0 +1,21 @@
+<table id="IDtext_x_source" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMtext_x_source" src="./icons/icons/text-x-source.png" style="width: 50px; height: 50px;"; title="text_x_source Window" onclick="abilita('IDTXTtext_x_source');" onDblClick="text_x_source();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTtext_x_source" name="IDNAMEtext_x_source" value="text-x-source" disabled=true style="text-align: center;" onblur="disabilita('IDTXTtext_x_source');" onDblClick="modifica('IDTXTtext_x_source');" size="8" maxlength=8 ></td></tr></tbody></table>
+function text_x_source(){
+ var wintext_x_source = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " text-x-source", width:500, height:300, top: 0, left:0}); 
+     wintext_x_source.setURL("http://www.projectspace.nl/");
+     wintext_x_source.setStatusBar("text-x-source");
+//   wintext_x_source.showCenter();
+     wintext_x_source.show();
+}
+  new Draggable("IDtext_x_source",{handle:"text_x_source",revert:function(element){}});
+
+IDtext-x-source = new ContextMenu();
+	IDtext_x_source.addItem("apri",   "Apri",   text-x-source, "_images/application_go.png");
+	IDtext_x_source.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDtext_x_source.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDtext_x_source.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDtext_x_source.addSeparator();
+	IDtext_x_source.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDtext_x_source.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDtext_x_source.register("IDtext_x_source");

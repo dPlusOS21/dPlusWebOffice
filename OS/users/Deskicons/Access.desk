@@ -1,0 +1,22 @@
+<table id="IDAccess" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMAccess" src="./icons/img/Access.png" style="width: 50px; height: 50px;"; title="Access Window" onclick="abilita('IDTXTAccess');" onDblClick="Access();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTAccess" name="IDNAMEAccess" value="Access" disabled=true style="text-align: center;" onblur="disabilita('IDTXTAccess');" onDblClick="modifica('IDTXTAccess');" size="8" maxlength=8 ></td></tr></tbody></table>
+function Access(){
+ var winAccess = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " Access", width:500, height:300, top: 0, left:0}); 
+     winAccess.setURL("applications/TurboDBAdmin/index.html");
+     winAccess.setStatusBar("Access");
+//     winAccess.showCenter();
+     winAccess.show();
+}
+  new Draggable("IDAccess",{handle:"Access",revert:function(element){}});
+
+IDAccess = new ContextMenu();
+	IDAccess.addItem("apri",   "Apri",   Access, "_images/application_go.png");
+	IDAccess.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDAccess.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDAccess.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDAccess.addSeparator();
+	IDAccess.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDAccess.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDAccess.register("IDAccess");
+

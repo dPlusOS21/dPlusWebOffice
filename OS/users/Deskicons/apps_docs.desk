@@ -1,0 +1,22 @@
+<table id="IDapps_docs" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMapps_docs" src="./icons/icons/apps_docs.png" style="width: 50px; height: 50px;"; title="apps_docs Window" onclick="abilita('IDTXTapps_docs');" onDblClick="apps_docs();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTapps_docs" name="IDNAMEapps_docs" value="apps_docs" disabled=true style="text-align: center;" onblur="disabilita('IDTXTapps_docs');" onDblClick="modifica('IDTXTapps_docs');" size="8" maxlength=8 ></td></tr></tbody></table>
+function apps_docs(){
+ var winapps_docs = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " apps_docs", width:500, height:300, top: 0, left:0}); 
+     winapps_docs.setURL("applications/ckeditor/_samples/php/ckeditor.php");
+     winapps_docs.setStatusBar("apps_docs");
+//     winapps_docs.showCenter();
+     winapps_docs.show();
+}
+  new Draggable("IDapps_docs",{handle:"apps_docs",revert:function(element){}});
+
+IDapps_docs = new ContextMenu();
+	IDapps_docs.addItem("apri",   "Apri",   apps_docs, "_images/application_go.png");
+	IDapps_docs.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDapps_docs.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDapps_docs.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDapps_docs.addSeparator();
+	IDapps_docs.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDapps_docs.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDapps_docs.register("IDapps_docs");
+

@@ -1,0 +1,21 @@
+<table id="IDPaint" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMPaint" src="./icons/img/Paint.png" style="width: 50px; height: 50px;"; title="Paint Window" onclick="abilita('IDTXTPaint');" onDblClick="Paint();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTPaint" name="IDNAMEPaint" value="Paint" disabled=true style="text-align: center;" onblur="disabilita('IDTXTPaint');" onDblClick="modifica('IDTXTPaint');" size="8" maxlength=8 ></td></tr></tbody></table>
+function Paint(){
+ var winPaint = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " Paint", width:500, height:300, top: 0, left:0}); 
+     winPaint.setURL("http://svg-edit.googlecode.com/svn/branches/2.5.1/editor/svg-editor.html");
+     winPaint.setStatusBar("Paint");
+//     winPaint.showCenter();
+     winPaint.show();
+}
+  new Draggable("IDPaint",{handle:"Paint",revert:function(element){}});
+
+IDPaint = new ContextMenu();
+	IDPaint.addItem("apri",   "Apri",   Paint, "_images/application_go.png");
+	IDPaint.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDPaint.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDPaint.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDPaint.addSeparator();
+	IDPaint.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDPaint.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDPaint.register("IDPaint");

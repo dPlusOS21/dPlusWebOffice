@@ -1,0 +1,21 @@
+<table id="IDdropbox" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMdropbox" src="./icons/icons/dropbox.png" style="width: 50px; height: 50px;"; title="dropbox Window" onclick="abilita('IDTXTdropbox');" onDblClick="dropbox();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTdropbox" name="IDNAMEdropbox" value="otixo" disabled=true style="text-align: center;" onblur="disabilita('IDTXTdropbox');" onDblClick="modifica('IDTXTdropbox');" size="8" maxlength=8 ></td></tr></tbody></table>
+function dropbox(){
+ var windropbox = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " otixo", width:500, height:300, top: 0, left:0}); 
+     windropbox.setURL("http://otixo.com/");
+     windropbox.setStatusBar("otixo");
+//     windropbox.showCenter();
+     windropbox.show();
+}
+  new Draggable("IDdropbox",{handle:"dropbox",revert:function(element){}});
+
+IDdropbox = new ContextMenu();
+	IDdropbox.addItem("apri",   "Apri",   dropbox, "_images/application_go.png");
+	IDdropbox.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDdropbox.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDdropbox.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDdropbox.addSeparator();
+	IDdropbox.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDdropbox.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDdropbox.register("IDdropbox");

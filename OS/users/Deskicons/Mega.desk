@@ -1,0 +1,21 @@
+<table id="IDMega" border="0" cellpadding="0" cellspacing="0" style="width: 50px; height: 50px; float: Left;"><tbody>
+<tr><td style="text-align: center;"><img id="IMMega" src="https://mega.co.nz/favicon.ico" style="width: 50px; height: 50px;"; title="Mega Window" onclick="abilita('IDTXTMega');" onDblClick="Mega();" /></td></tr>
+<tr><td style="text-align: center;"><input type="text" id="IDTXTMega" name="IDNAMEMega" value="Mega" disabled=true style="text-align: center;" onblur="disabilita('IDTXTMega');" onDblClick="modifica('IDTXTMega');" size="8" maxlength=8 ></td></tr></tbody></table>
+function Mega(){
+ var winMega = new Window({className: "mac_os_x", blurClassName: "blur_os_x", title: " Mega", width:500, height:300, top: 0, left:0}); 
+/*   winMega.setURL(""); */ window.open("https://mega.co.nz/#fm/XdsklLTQ/","Mega","width=700,height=700,toolbar=no,location=no,status=yes,menubar=no,scrollbars=no,resizable=no"); 
+//   winMega.setStatusBar("Redhat");
+//   winMega.showCenter();
+//   winMega.show();
+}
+  new Draggable("IDMega",{handle:"Mega",revert:function(element){}});
+
+IDMega = new ContextMenu();
+	IDMega.addItem("apri",   "Apri",   Mega, "_images/application_go.png");
+	IDMega.addItem("taglia",   "Elimina",   elimina, "_images/application_delete.png");
+	IDMega.addItem("copia",   "Copia",   copia, "_images/application_double.png");
+	IDMega.addItem("rinomina",   "Rinomina...",   abilita, "_images/application_edit.png");
+	IDMega.addSeparator();
+	IDMega.addItem("coordinate",   "Memoriza Posizione",   rilevacoordinate, "_images/mouse.png");
+	IDMega.addItem("proprieta",   "Proprietà",   property, "_images/application_key.png");
+	IDMega.register("IDMega");
