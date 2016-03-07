@@ -99,6 +99,42 @@ $dpath=$_GET["dpath"];
 $actionlink="index.php?dpath=$dpath";
 
 
+//__________________________________________________________________________________________________________________________________
+/**
+ * La funzione predispone un nuovo documento writer
+ *
+ * @author FW-TEAM
+ * @version 20070422
+ * @since   20070422
+ * @param 
+ * @param 
+ */
+function add_new_file_docx(){
+
+echo "
+<br><br>
+    <script type='text/javascript'>
+
+    </script>
+
+</head>
+<body>
+				<div id='editor' style='width: \'100%\'; ' >
+<br><br>
+<br><br>
+<br><br>
+<br><br>
+				</div>
+<script>
+	initSample();
+</script>
+</body>
+</html>
+";
+
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -673,7 +709,6 @@ span.cosmetica
 	color: #111111;
 	font-size: 12px;
 }
-
 </style>
 
 <div class="ipuser" style="position:fixed; top: 0px; left: 0px; width:100%; z-index: 20;">
@@ -744,8 +779,36 @@ $actionlink="index.php?dpath=$dpath";
 		<?php } else { ?>
 			<input style="position:fixed; right: 5px; z-index: 20;" type='image' src="../libs/avatars/<?=$user_avatar;?>" onclick="javascript: location.href='../_reguser/index.php';" title="<?=_WELCOME?> <?=$utente;?>" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="right" />
 		<?php } ?>
-</div>
 <div id='barretta' style='position:fixed;  z-index: 20; top: 50px; height:5px; width:100%; background-color: red;' ></div>
+</div>
+
+
+<?php
+
+$utente=$_COOKIE["utente"];
+$action=$_GET['action'];
+
+    if ($utente!=""){
+
+// l'albero degli eventi
+    switch($action){
+	case "help":
+	    //help($dpath);
+	    break;
+	case "search":
+	    search($dpath);
+	    break;
+	case "exec_search":
+	    exec_search($dpath);
+	    break;
+	case "addnewfiledocx":
+	    add_new_file_docx();
+	    break;
+	case "addnewfilexlsx":
+	    add_new_file_xlsx();
+	    break;
+	default:
+?>
 
 <br><br>
     <script type="text/javascript">
@@ -761,10 +824,39 @@ $actionlink="index.php?dpath=$dpath";
 <script>
 	initSample();
 </script>
+<!-- caricamento dei righelli -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../js/ruler/ruler.css">
+	<script type="text/javascript" src="../js/ruler/jquery.ruler.js"></script>
+<script>
+$(function() {
+  $('body').ruler();    
+});
+</script>
+<!-- caricamento dei righelli -->
+<style>
+body {
+font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
+width: 210mm;
+height: 297mm;
+background-color: #ffffff;
+/*margin: 17mm;
+padding-left: 10mm;*/
+        margin-left:auto;
+        margin-right:auto;
+}
+
+@page {
+size: landscape;
+width: 297mm;
+height: 210mm;
+margin: 5mm;
+}
+</style>
 </body>
 </html>
-
-
-
-
+<?php
+}
+}
+?>
 
