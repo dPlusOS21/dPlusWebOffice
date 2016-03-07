@@ -149,7 +149,16 @@ echo "
 	<script src="./ckeditor_personal/samples/js/sample.js"></script>
 	<link rel="stylesheet" href="./ckeditor_personal/samples/css/samples.css">
 	<link rel="stylesheet" href="./ckeditor_personal/samples/toolbarconfigurator/lib/codemirror/neo.css">
-
+<!-- caricamento dei righelli -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="../js/ruler/ruler.css">
+	<script type="text/javascript" src="../js/ruler/jquery.ruler.js"></script>
+<script>
+$(function() {
+  $('body').ruler();    
+});
+</script>
+<!-- caricamento dei righelli -->
 <style>
 body {
         margin: 0;
@@ -824,16 +833,6 @@ $action=$_GET['action'];
 <script>
 	initSample();
 </script>
-<!-- caricamento dei righelli -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="../js/ruler/ruler.css">
-	<script type="text/javascript" src="../js/ruler/jquery.ruler.js"></script>
-<script>
-$(function() {
-  $('body').ruler();    
-});
-</script>
-<!-- caricamento dei righelli -->
 <style>
 body {
 font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
