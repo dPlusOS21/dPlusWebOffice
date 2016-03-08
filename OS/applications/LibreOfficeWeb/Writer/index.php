@@ -109,8 +109,7 @@ $actionlink="index.php?dpath=$dpath";
  * @param 
  * @param 
  */
-function add_new_file_docx(){
-
+function add_new_file_docx($dpath){
 echo "
 <br><br>
     <script type='text/javascript'>
@@ -120,14 +119,30 @@ echo "
 </head>
 <body>
 				<div id='editor' style='width: \'100%\'; ' >
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+
 				</div>
 <script>
 	initSample();
 </script>
+<style>
+body {
+font-family: sans-serif, Arial, Verdana, \"Trebuchet MS\";
+width: 210mm;
+height: 297mm;
+background-color: #ffffff;
+/*margin: 17mm;
+padding-left: 10mm;*/
+        margin-left:auto;
+        margin-right:auto;
+}
+
+@page {
+size: landscape;
+width: 297mm;
+height: 210mm;
+margin: 5mm;
+}
+</style>
 </body>
 </html>
 ";
@@ -796,6 +811,7 @@ $actionlink="index.php?dpath=$dpath";
 
 $utente=$_COOKIE["utente"];
 $action=$_GET['action'];
+$dpath=$_GET["dpath"];
 
     if ($utente!=""){
 
@@ -810,11 +826,11 @@ $action=$_GET['action'];
 	case "exec_search":
 	    exec_search($dpath);
 	    break;
-	case "addnewfiledocx":
-	    add_new_file_docx();
+	case "add_new_file_docx":
+	    add_new_file_docx($dpath);
 	    break;
-	case "addnewfilexlsx":
-	    add_new_file_xlsx();
+	case "add_new_file_xlsx":
+	    add_new_file_xlsx($dpath);
 	    break;
 	default:
 ?>
