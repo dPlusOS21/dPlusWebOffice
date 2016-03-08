@@ -36,6 +36,7 @@ $zip_op=$_GET['zip_op'];
 
 $filename=$_GET['filename'];
 
+$progetto=$_GET["progetto"];
 // test da abilitare con variabili di controllo solo al bisogno
 // ----------------------------------------------------------------------------------//
 // echo "<h3>Nome applicazione: ".$appname."</h3><br>";
@@ -96,6 +97,8 @@ switch($lang){
 
 $dpath=$_GET["dpath"];
 
+$progetto=$_GET["progetto"];
+
 $actionlink="index.php?dpath=$dpath";
 
 
@@ -110,6 +113,7 @@ $actionlink="index.php?dpath=$dpath";
  * @param 
  */
 function add_new_file_docx($dpath){
+$progetto=$_GET["progetto"];
 echo "
 <br><br>
 <body>
