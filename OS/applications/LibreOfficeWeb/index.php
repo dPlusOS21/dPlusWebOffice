@@ -107,6 +107,14 @@ $actionlink="index.php?dpath=$dpath";
 		<script src="../../js/jquery.min.js"></script>
 	</head>
 <style>
+html { 
+  background: url(http://ringvemedia.com/server//bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
         margin: 0;
 }
