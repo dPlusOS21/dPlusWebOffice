@@ -467,7 +467,12 @@ window.addEventListener('offline', function(e) {
     <a href="index.php?action=search"><input type='image' src="../images/search.png" onclick="javascript: location.href='index.php?action=search';" title="[<?=_SEARCH?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_dir"><input type='image' src="../images/folder-add.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_dir';" title="[<?=_ADD_FOLDER?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_file"><input type='image' src="../images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
-    <a href="<?=$actionlink;?>&action=add_new_file_docx"><input type='image' src="../none_images/docx.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+<?php
+echo "<a><input type='image' src='../../$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('Nome Documento',''); if (getElementById('progetto').value != '') { newdocx.submit();};\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
+echo "<form id='newdocx' name='newdocx' action='index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>";
+echo "<input type='hidden' name='progetto' id='progetto' value=''>";
+echo "</form>";
+?>
     <a href="<?=$actionlink;?>&action=add_new_file_xlsx"><input type='image' src="../none_images/xlsx.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_new_file_odg"><input type='image' src="../none_images/odg.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_new_file_odb"><input type='image' src="../none_images/odb.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
