@@ -115,7 +115,7 @@ $actionlink="index.php?dpath=$dpath";
 function add_new_file_docx($dpath){
 $progetto=$_POST["progetto"];
 $dpath1=$dpath.$progetto;
-echo "<span style=\"position: fixed; top: -20px; left: 250px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
+echo "<span style=\"position: fixed; top: -20px; left: 220px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
 echo "
 <br><br>
 </head>
@@ -797,7 +797,7 @@ $actionlink="index.php?dpath=$dpath";
 
 <input type='image' src="../images/menu.png" id="nav_list" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0"  align="left" />
 <input type='image' src="../none_images/Libre-Office.png" onclick="javascript: location.href='index.php';" title="Benvenuto in Libre Office Web" border=0 WIDTH="48" HEIGHT="42" hspace="3" vspace="0" align="left" />
-<input type='image' src="../images/previous.png" onclick="javascript:window.history.back();" title="[Back]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+<input type='image' src="../images/previous.png" onclick="location.href='../index.php';" title="[Back to Home]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <input type='image' src="../images/system-help.png" onclick="" title="[Help]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <?    if ($user_avatar=="")$user_avatar="avtr00.png";
 		if (substr($user_avatar,0,4)=="http"){ ?>
@@ -837,7 +837,7 @@ $dpath=$_GET["dpath"];
 	default:
 $progetto=$_POST["progetto"];
 $dpath1=$dpath.$progetto;
-echo "<span style=\"position: fixed; top: -20px; left: 250px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
+echo "<span style=\"position: fixed; top: -20px; left: 220px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
 ?>
 <br><br>
 </head>
