@@ -113,9 +113,10 @@ $actionlink="index.php?dpath=$dpath";
  * @param 
  */
 function add_new_file_docx($dpath){
-$progetto=$_GET["progetto"];
+$progetto=$_POST["progetto"];
+$dpath1=$dpath.$progetto;
+echo "<h1><b>$progetto.docx</b></h1>";
 echo "
-<br><br>
 <body>
 				<div id='editor' style='width: \'100%\'; ' >
 
@@ -832,8 +833,10 @@ $dpath=$_GET["dpath"];
 	    add_new_file_xlsx($dpath);
 	    break;
 	default:
+$progetto=$_POST["progetto"];
+$dpath1=$dpath.$progetto;
+echo "<h1><b>$progetto.docx</b></h1>";
 ?>
-<br><br>
 </head>
 <body>
 				<div id="editor" style="width: '100%'; " >
