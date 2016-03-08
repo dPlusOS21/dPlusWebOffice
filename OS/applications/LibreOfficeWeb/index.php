@@ -398,7 +398,7 @@ window.addEventListener('offline', function(e) {
     <a href="index.php?action=search"><input type='image' src="../../applications/<?=$appname;?>/images/search.png" onclick="javascript: location.href='index.php?action=search';" title="[<?=_SEARCH?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_dir"><input type='image' src="../../applications/<?=$appname;?>/images/folder-add.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_dir';" title="[<?=_ADD_FOLDER?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_file"><input type='image' src="../../applications/<?=$appname;?>/images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
-    <a href="Writer/index.php?&action=addnewfiledocx"><input type='image' src="../../applications/<?=$appname;?>/none_images/docx.png" onclick="javascript: location.href='Writer/index.php&action=addnewfiledocx';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+    <a href="Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx"><input type='image' src="../../applications/<?=$appname;?>/none_images/docx.png" onclick="javascript: location.href='Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="Calc/index.php?&action=addnewfilexlsx"><input type='image' src="../../applications/<?=$appname;?>/none_images/xlsx.png" onclick="javascript: location.href='Calc/index.php?&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=addnewfileodg"><input type='image' src="../../applications/<?=$appname;?>/none_images/odg.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=addnewfileodb"><input type='image' src="../../applications/<?=$appname;?>/none_images/odb.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
@@ -1409,6 +1409,7 @@ function mkthumbs($source,$dest){
 
 function new_file_docx($dpath){
 echo "<br>";
+echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."/Writer/index.php?dpath=$dpath&action=add_new_file_docx\">";
 }
 //-------------------------------------------------------------------------------------------------------
 
