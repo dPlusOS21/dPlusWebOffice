@@ -399,7 +399,7 @@ window.addEventListener('offline', function(e) {
     <a href="<?=$actionlink;?>&action=add_file"><input type='image' src="../../applications/<?=$appname;?>/images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
 <!--    <a href="Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx"><input type='image' src="../../applications/<?=$appname;?>/none_images/docx.png" onclick="javascript: location.href='Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a> -->
 <?php
-echo "<a><input type='image' src='../../applications/$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('nome progetto','Nuovo Documento'); if (getElementById('progetto').value != 'Nuovo Documento') { newdocx.submit();};\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
+echo "<a><input type='image' src='../../applications/$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('Nome Documento',''); if (getElementById('progetto').value != '') { newdocx.submit();};\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
 echo "<form id='newdocx' name='newdocx' action='Writer/index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>";
 echo "<input type='hidden' name='progetto' id='progetto' value=''>";
 echo "</form>";
