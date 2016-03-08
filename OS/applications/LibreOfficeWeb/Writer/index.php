@@ -115,8 +115,10 @@ $actionlink="index.php?dpath=$dpath";
 function add_new_file_docx($dpath){
 $progetto=$_POST["progetto"];
 $dpath1=$dpath.$progetto;
-echo "<h1><b>$progetto.docx</b></h1>";
+echo "<span style=\"position: fixed; top: -20px; left: 250px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
 echo "
+<br><br>
+</head>
 <body>
 				<div id='editor' style='width: \'100%\'; ' >
 
@@ -835,8 +837,9 @@ $dpath=$_GET["dpath"];
 	default:
 $progetto=$_POST["progetto"];
 $dpath1=$dpath.$progetto;
-echo "<h1><b>$progetto.docx</b></h1>";
+echo "<span style=\"position: fixed; top: -20px; left: 250px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
 ?>
+<br><br>
 </head>
 <body>
 				<div id="editor" style="width: '100%'; " >
