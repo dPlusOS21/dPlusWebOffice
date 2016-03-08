@@ -402,7 +402,6 @@ window.addEventListener('offline', function(e) {
 echo "<a><input type='image' src='../../applications/$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('nome progetto','Nuovo Documento'); newdocx.submit();\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
 echo "<form id='newdocx' name='newdocx' action='Writer/index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>";
 echo "<input type='hidden' name='progetto' id='progetto' value=''>";
-//echo "<a><input type='image' src='../../applications/$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('nome progetto','');\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
 echo "</form>";
 ?>
     <a href="Calc/index.php?&action=addnewfilexlsx"><input type='image' src="../../applications/<?=$appname;?>/none_images/xlsx.png" onclick="javascript: location.href='Calc/index.php?&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
