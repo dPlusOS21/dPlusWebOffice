@@ -112,11 +112,6 @@ $actionlink="index.php?dpath=$dpath";
 function add_new_file_docx($dpath){
 echo "
 <br><br>
-    <script type='text/javascript'>
-
-    </script>
-
-</head>
 <body>
 				<div id='editor' style='width: \'100%\'; ' >
 
@@ -834,12 +829,7 @@ $dpath=$_GET["dpath"];
 	    break;
 	default:
 ?>
-
 <br><br>
-    <script type="text/javascript">
-
-    </script>
-
 </head>
 <body>
 				<div id="editor" style="width: '100%'; " >
