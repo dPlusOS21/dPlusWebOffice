@@ -16,6 +16,11 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
+//$utente="utente";
+//$cartella="cartella";
+//$user_avatar='';
+
+
 //la directory dei submit
 global $updatefiles;
 
@@ -744,7 +749,7 @@ span.cosmetica
 
 <div class="ipuser" style="position:fixed; top: 0px; left: 0px; width:100%; z-index: 20;">
 <?php
-define('BLOCKIP','1.00');
+//define('BLOCKIP','1.00');
 
 /************************************************************************/
 /* FrameWork  test preview                                              */
@@ -785,8 +790,8 @@ switch($lang){
 	define("_PER_ENTRARE","Per entrare");
 	define("_EMAIL_PASSW_FORWARD","Recupero Password via E-Mail ");
 	define("_REGISTRATI","Registrati");
-	define("_WELCOME","Benvenuto");
-	define("_MODIFICA_IMPOSTAZIONI","impostazioni");
+	//define("_WELCOME","Benvenuto");
+	//define("_MODIFICA_IMPOSTAZIONI","impostazioni");
 	define("_REMEMBER_PASSWORD","Ricordami la mia Password");
 	define("_SECURITYCODE","Security Code");
 	define("_EXIT","Uscita");
