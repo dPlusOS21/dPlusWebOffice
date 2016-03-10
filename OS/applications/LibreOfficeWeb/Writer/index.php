@@ -16,11 +16,6 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-//$utente="utente";
-//$cartella="cartella";
-//$user_avatar='';
-
-
 //la directory dei submit
 global $updatefiles;
 
@@ -170,9 +165,8 @@ margin: 5mm;
 	<script src="./ckeditor_personal/ckeditor.js"></script>
 	<script src="./ckeditor_personal/samples/js/sample.js"></script>
 	<link rel="stylesheet" href="./ckeditor_personal/samples/css/samples.css">
-	<link rel="stylesheet" href="./ckeditor_personal/samples/toolbarconfigurator/lib/codemirror/neo.css">
+<!-- 	<link rel="stylesheet" href="./ckeditor_personal/samples/toolbarconfigurator/lib/codemirror/neo.css"> -->
 <!-- caricamento dei righelli -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="../js/ruler/ruler.css">
 	<script type="text/javascript" src="../js/ruler/jquery.ruler.js"></script>
 <script>
@@ -749,7 +743,7 @@ span.cosmetica
 
 <div class="ipuser" style="position:fixed; top: 0px; left: 0px; width:100%; z-index: 20;">
 <?php
-//define('BLOCKIP','1.00');
+define('BLOCKIP','1.00');
 
 /************************************************************************/
 /* FrameWork  test preview                                              */
@@ -790,8 +784,8 @@ switch($lang){
 	define("_PER_ENTRARE","Per entrare");
 	define("_EMAIL_PASSW_FORWARD","Recupero Password via E-Mail ");
 	define("_REGISTRATI","Registrati");
-	//define("_WELCOME","Benvenuto");
-	//define("_MODIFICA_IMPOSTAZIONI","impostazioni");
+	define("_WELCOME","Benvenuto");
+	define("_MODIFICA_IMPOSTAZIONI","impostazioni");
 	define("_REMEMBER_PASSWORD","Ricordami la mia Password");
 	define("_SECURITYCODE","Security Code");
 	define("_EXIT","Uscita");
@@ -825,7 +819,7 @@ $utente=$_COOKIE["utente"];
 $action=$_GET['action'];
 $dpath=$_GET["dpath"];
 
-    if ($utente!=""){
+    if ($utente==""){
 
 // l'albero degli eventi
     switch($action){
