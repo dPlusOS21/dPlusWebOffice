@@ -969,7 +969,7 @@ echo "<link rel=\"StyleSheet\" href=\"../../applications/$appname/style.css\" ty
 //------------------------
 //$user=user_getuser();
 
-if ($utente!=""){
+if ($utente==""){
 // se la directory datas/applications/$appname non c'e' la crea:
 if(file_exists("../../users/$utente/$cartella/LibreOfficeWebData")==false){ mkdir("../../users/$utente/$cartella/LibreOfficeWebData",0775); }
 if(file_exists("../../users/$utente/$cartella/LibreOfficeWebData/none_updatefiles")==false){ mkdir("../../users/$utente/$cartella/LibreOfficeWebData/none_updatefiles",0775); }
@@ -1294,7 +1294,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
 
 	$siteurl=$_GLOBALS['siteurl'];
         $appname ="LibreOfficeWeb";
@@ -1352,7 +1352,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
 
@@ -1646,7 +1646,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1694,7 +1694,7 @@ $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
     global $updatefiles;
-    if ($utente!=""){
+    if ($utente==""){
 	$appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1737,7 +1737,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1808,7 +1808,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
 	$namedir=$_POST['namedir'];
@@ -1860,7 +1860,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
 	$filename=$_GET['filename'];
@@ -1884,7 +1884,7 @@ $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
     global $updatefiles;
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1907,7 +1907,7 @@ $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
     global $updatefiles;
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1951,7 +1951,7 @@ $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
     global $updatefiles;
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1991,7 +1991,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -2018,7 +2018,7 @@ $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
 
-    if ($utente!=""){
+    if ($utente==""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
@@ -2069,7 +2069,7 @@ $dalevare=7+strlen($utente)+1+strlen($cartella)+1;
     $dirlist="";
     $out="";
     $p="";
-	if ($utente!=""){
+	if ($utente==""){
     for($i=0;$i<strlen($dpath)-1;$i++){
 	if($dpath[$i]=="/"){
 	    $a++;
@@ -2111,7 +2111,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     $siteurl=$_GLOBALS['siteurl'];
     $updatedir ="$updatefiles";
 
-	if ($utente!=""){
+	if ($utente==""){
 
     $extfs=opendir("../../applications/$appname/none_images");
     while (false !== ($extimg= readdir($extfs))){
@@ -2449,7 +2449,7 @@ echo "<link rel=\"stylesheet\" href=\"../../applications/$appname/js/lightbox2.0
     }
  // Clipboard
 
-    if ($utente!=""){
+    if ($utente==""){
 	echo "<br>";
 
 	echo "<table width='100%' style='position:relative; top: -25px;' ><tr><td class='clipboard_title'>&nbsp;<img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>Clipboard:</font>&nbsp <img src='../../applications/$appname/none_images/mini_down.gif' align='absmiddle' border='0'> ["._UPDATE_FILES."] ";
@@ -2581,7 +2581,7 @@ if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOf
 if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOfficeWebData/";
 
 
-    if ($utente!=""){
+    if ($utente==""){
 
     $constants=get_defined_constants();
     $menutitle=$constants["_".strtoupper($action)];
