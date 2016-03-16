@@ -10,7 +10,8 @@ CKEDITOR.editorConfig = function( config ) {
 
 	 config.language = 'it';
 	 config.skin = 'moonocolor';
-	 config.uiColor = '#AADC6E';
+	 config.toolbarCanCollapse = true;
+	 //config.uiColor = '#AADC6E';
 
 	config.language_list = [ 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ar:Arabic', 'es:Spanish', 'fr:France', 'ru:Russian', 'zh:Cina' ];
 
@@ -28,8 +29,8 @@ CKEDITOR.editorConfig = function( config ) {
                               ]
                            };
 	config.toolbarGroups = [
-		{ name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
-		{ name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+		{ name: 'clipboard', groups: [ 'save', 'preview', 'print', 'clipboard', 'undo' ] },
+		{ name: 'editing', groups: [ 'find', 'replace', 'selection', 'spellchecker', 'editing' ] },
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
 		{ name: 'forms', groups: [ 'forms' ] },
