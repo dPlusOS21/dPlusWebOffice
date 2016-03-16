@@ -162,8 +162,8 @@ margin: 5mm;
 	<title>Dplus - WebOffice - Writer</title>
 	<meta name="description" content="LibreOfficeWeb - Writer">     
 	<script type="text/javascript" src="./ckeditor_standard/jquery-1.11.1.min.js"></script>
-	<script src="./ckeditor_personal/ckeditor.js"></script>
-	<script src="./ckeditor_personal/samples/js/sample.js"></script>
+	<script src="./ckeditor_personal/ckeditor.js?t=CAPD"></script>
+	<script src="./ckeditor_personal/samples/js/sample.js?t=CAPD"></script>
 	<link rel="stylesheet" href="./ckeditor_personal/samples/css/samples.css">
 <!-- 	<link rel="stylesheet" href="./ckeditor_personal/samples/toolbarconfigurator/lib/codemirror/neo.css"> -->
 <!-- caricamento dei righelli -->
@@ -819,7 +819,7 @@ $utente=$_COOKIE["utente"];
 $action=$_GET['action'];
 $dpath=$_GET["dpath"];
 
-    if ($utente==""){
+    if ($utente!=""){
 
 // l'albero degli eventi
     switch($action){
