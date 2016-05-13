@@ -1,0 +1,15 @@
+body,h1,h2,h3,p,quote,small,form,input,ul,li,ol,label{
+	/* Simple page reset */
+	margin:0;
+	padding:0;
+}
+
+body{
+	/* Setting default text color, background and a font stack */
+	color:#dddddd;
+	font-size:13px;
+	background: #000000;
+	font-family:Arial, Helvetica, sans-serif;
+}
+
+

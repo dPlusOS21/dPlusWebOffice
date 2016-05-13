@@ -1,0 +1,78 @@
+.clock{
+	/* The .clock div. Created dynamically by jQuery */
+	background-color:#000000;
+	height:200px;
+	width:200px;
+	position:relative;
+	overflow:hidden;
+	float:left;
+}
+
+.clock .rotate{
+	/* There are two .rotate divs - one for each half of the background */
+	position:absolute;
+	width:200px;
+	height:200px;
+	top:0;
+	left:0;
+}
+
+.rotate.right{
+	display:none;
+	z-index:11;
+}
+
+.clock .bg, .clock .front{
+	width:100px; /* visualizzazione del movimento di rotazione cerchi */
+	height:200px; /* visualizzazione dei cerchi - posizione di inizio */
+	background-color:#000000;
+	position:absolute;
+	top:0;
+}
+
+.clock .display{
+	/* Holds the number of seconds, minutes or hours respectfully */
+	position:absolute;
+	width:200px; /* posizione cifre orologio - se diminuisce di accostano a sx */
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	z-index:20;
+	color:#F5F5F5;
+	font-size:60px; /* riduce grandezza carattere */
+	text-align:center;
+	top:65px;
+	left:0;
+	
+	/* CSS3 text shadow: */
+	text-shadow:4px 4px 5px #333333;
+}
+
+/* The left part of the background: */
+
+.clock .bg.left{ left:0; }
+
+/* Individual styles for each color: */
+.orange .bg.left{ background:url(../images/bg_orange.png) no-repeat left top; }
+.green .bg.left{ background:url(../images/bg_green.png) no-repeat left top; }
+.blue .bg.left{	background:url(../images/bg_blue.png) no-repeat left top; }
+
+/* The right part of the background: */
+.clock .bg.right{ left:100px; }
+
+.orange .bg.right{ background:url(../images/bg_orange.png) no-repeat right top; }
+.green .bg.right{ background:url(../images/bg_green.png) no-repeat right top; }
+.blue .bg.right{ background:url(../images/bg_blue.png) no-repeat right top; }
+
+
+.clock .front.left{
+	left:0;
+	z-index:10;
+}
+
+#fancyClock{
+	margin-left:0%;
+	margin-top:0%;
+	height:0%;
+	border:1px solid #111111;
+	width:0%;
+}
+

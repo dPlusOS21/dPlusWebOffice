@@ -113,16 +113,29 @@ $actionlink="index.php?dpath=$dpath";
  * @param 
  */
 function add_new_file_docx($dpath){
-$progetto=$_POST["progetto"];
-$dpath1=$dpath.$progetto;
-echo "<span style=\"position: fixed; top: -20px; left: 220px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
+$utente=$_COOKIE["utente"];
+$cartella=$_COOKIE["cartella"];
+$user_avatar=$_COOKIE['user_avatar'];
+//$dpath="../../../users/".$utente."/".$cartella."/LibreOfficeWebData/";
+
+$progetto=$_GET["progetto"];
+$progetto1=$_POST["progetto"];
+
+$dpath=$dpath.$progetto1;
+$editor=$_POST['editor'];
+
+$fp=fopen($dpath.$progetto.".docx","w");fwrite($fp, $editor);fclose($fp);
+
+echo "<span style=\"position: fixed; top: -10px; left: 220px; z-index: 100;\" ><h3><b>$dpath.docx</b></h3></span>";
 echo "
 <br><br>
 </head>
 <body>
-				<div id='editor' style='width: \'100%\'; ' >
-
-				</div>
+			<form name='savefile' enctype='multipart/form-data' action='index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>
+				<textarea id='editor' name='editor' style='width: 100%; height: 297mm;'>";
+				echo join(file("$dpath.docx"));
+echo "				</textarea>
+			</form>
 <script>
 	initSample();
 </script>
@@ -131,7 +144,7 @@ body {
 font-family: sans-serif, Arial, Verdana, \"Trebuchet MS\";
 width: 210mm;
 height: 297mm;
-background-color: #ffffff;
+background-color: #EAF2F8;
 /*margin: 17mm;
 padding-left: 10mm;*/
         margin-left:auto;
@@ -161,10 +174,10 @@ margin: 5mm;
 	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' />
 	<title>Dplus - WebOffice - Writer</title>
 	<meta name="description" content="LibreOfficeWeb - Writer">     
-	<script type="text/javascript" src="./ckeditor_standard/jquery-1.11.1.min.js"></script>
-	<script src="./ckeditor_personal/ckeditor.js?t=CAPD"></script>
-	<script src="./ckeditor_personal/samples/js/sample.js?t=CAPD"></script>
-	<link rel="stylesheet" href="./ckeditor_personal/samples/css/samples.css">
+	<script type="text/javascript" src="./ckeditor_personal/jquery-1.11.1.js"></script>
+	<script src="./ckeditor/ckeditor.js"></script>
+	<script src="./ckeditor/samples/js/sample.js"></script>
+	<link rel="stylesheet" href="./ckeditor/samples/css/samples.css">
 <!-- 	<link rel="stylesheet" href="./ckeditor_personal/samples/toolbarconfigurator/lib/codemirror/neo.css"> -->
 <!-- caricamento dei righelli -->
 	<link rel="stylesheet" type="text/css" href="../js/ruler/ruler.css">
@@ -463,9 +476,10 @@ window.addEventListener('offline', function(e) {
 <body class="pushmenu-push">
 <nav class="pushmenu pushmenu-left">
 <input type='image' src="../images/menu.png" id="nav_list1" border=0 WIDTH="40" HEIGHT="40" hspace="10" vspace="10"  align="left" /><br><br><br><br>
-    <a href="index.php?action=search"><input type='image' src="../images/search.png" onclick="javascript: location.href='index.php?action=search';" title="[<?=_SEARCH?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
-    <a href="<?=$actionlink;?>&action=add_dir"><input type='image' src="../images/folder-add.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_dir';" title="[<?=_ADD_FOLDER?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
-    <a href="<?=$actionlink;?>&action=add_file"><input type='image' src="../images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+<!--    <a href="../index.php"><input type='image' src="../none_images/Libre-Office.png" onclick="javascript: location.href='../index.php';" title="[Benvenuto in Libre Office Web]" border=0 WIDTH="48" HEIGHT="42" /></a> -->
+    <a href="../index.php?action=search"><input type='image' src="../images/search.png" onclick="javascript: location.href='../index.php?action=search';" title="[<?=_SEARCH?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+    <a href="../<?=$actionlink;?>&action=add_dir"><input type='image' src="../images/folder-add.png" onclick="javascript: location.href='../<?=$actionlink;?>&action=add_dir';" title="[<?=_ADD_FOLDER?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+    <a href="../<?=$actionlink;?>&action=add_file"><input type='image' src="../images/uploads-file.png" onclick="javascript: location.href='../<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
 <?php
 echo "<a><input type='image' src='../../$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('Nome Documento',''); if (getElementById('progetto').value != '') { newdocx.submit();};\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
 echo "<form id='newdocx' name='newdocx' action='index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>";
@@ -800,7 +814,7 @@ $actionlink="index.php?dpath=$dpath";
 ?>
 
 <input type='image' src="../images/menu.png" id="nav_list" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0"  align="left" />
-<input type='image' src="../none_images/Libre-Office.png" onclick="javascript: location.href='index.php';" title="Benvenuto in Libre Office Web" border=0 WIDTH="48" HEIGHT="42" hspace="3" vspace="0" align="left" />
+<input type='image' src="../none_images/Libre-Office.png" onclick="javascript: location.href='../index.php';" title="Benvenuto in Libre Office Web" border=0 WIDTH="48" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <input type='image' src="../images/previous.png" onclick="location.href='../index.php';" title="[Back to Home]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <input type='image' src="../images/system-help.png" onclick="" title="[Help]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <?    if ($user_avatar=="")$user_avatar="avtr00.png";
@@ -839,6 +853,11 @@ $dpath=$_GET["dpath"];
 	    add_new_file_xlsx($dpath);
 	    break;
 	default:
+$utente=$_COOKIE["utente"];
+$cartella=$_COOKIE["cartella"];
+$user_avatar=$_COOKIE['user_avatar'];
+$dpath="../../../users/".$utente."/".$cartella."/LibreOfficeWebData/";
+
 $progetto=$_POST["progetto"];
 $dpath1=$dpath.$progetto;
 echo "<span style=\"position: fixed; top: -20px; left: 220px; z-index: 100;\" ><h2><b>$progetto.docx</b></h2></span>";
@@ -846,10 +865,11 @@ echo "<span style=\"position: fixed; top: -20px; left: 220px; z-index: 100;\" ><
 <br><br>
 </head>
 <body>
-				<div id="editor" style="width: '100%'; " >
+			<form name='savefile' enctype='multipart/form-data' action='index.php?dpath=$dpath1&action=add_new_file_docx' method='post'>
+				<textarea id='editor'>
 					<h1>Hello world!</h1>
-					<p>I'm an instance of <a href="http://ckeditor.com">CKEditor</a>.</p>
-				</div>
+				</textarea>
+			</form>
 <script>
 	initSample();
 </script>
@@ -858,7 +878,7 @@ body {
 font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
 width: 210mm;
 height: 297mm;
-background-color: #ffffff;
+background-color: #EAF2F8;
 /*margin: 17mm;
 padding-left: 10mm;*/
         margin-left:auto;

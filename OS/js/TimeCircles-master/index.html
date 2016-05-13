@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link rel="stylesheet" href="inc/bootstrap.min.css">
+        <script type="text/javascript" src="inc/TimeCircles.js"></script>
+        <link rel="stylesheet" href="inc/TimeCircles.css" />
+    </head>
+    <body>
+
+            <h1>TimeCircle examples</h1>
+            <h2>Time until 2014</h2>
+            <div id="DateCountdown" data-date="2014-01-01 00:00:00" style="padding: 0px; box-sizing: border-box; background-color: #E0E8EF"></div>
+            <div style="padding: 10px;">
+                <input type="date" id="date" value="2014-01-01">
+                <input type="time" id="time" value="00:00">
+            </div>
+	    <button class="btn btn-success start">Start</button>
+	    <button class="btn btn-danger stop">Stop</button>
+	    <button class="btn btn-info restart">Restart</button>
+
+
+        <script>
+            $("#DateCountdown").TimeCircles();
+$(".start").click(function(){ $("#DateCountdown").TimeCircles().start(); });
+$(".stop").click(function(){ $("#DateCountdown").TimeCircles().stop(); });
+$(".restart").click(function(){ $("#DateCountdown").TimeCircles().restart(); });
+
+
+            $("#CountDownTimer").TimeCircles({ time: { Days: { show: false }, Hours: { show: false } }});
+            $("#PageOpenTimer").TimeCircles();
+
+
+$(".example.stopwatch").TimeCircles();
+$(".start").click(function(){ $(".example.stopwatch").TimeCircles().start(); });
+$(".stop").click(function(){ $(".example.stopwatch").TimeCircles().stop(); });
+$(".restart").click(function(){ $(".example.stopwatch").TimeCircles().restart(); });
+
+            
+            var updateTime = function(){
+                var date = $("#date").val();
+                var time = $("#time").val();
+                var datetime = date + ' ' + time + ':00';
+                $("#DateCountdown").data('date', datetime).TimeCircles().start();
+            }
+            $("#date").change(updateTime).keyup(updateTime);
+            $("#time").change(updateTime).keyup(updateTime);
+            
+            // Start and stop are methods applied on the public TimeCircles instance
+            $(".startTimer").click(function() {
+                $("#CountDownTimer").TimeCircles().start();
+            });
+            $(".stopTimer").click(function() {
+                $("#CountDownTimer").TimeCircles().stop();
+            });
+
+            // Fade in and fade out are examples of how chaining can be done with TimeCircles
+            $(".fadeIn").click(function() {
+                $("#PageOpenTimer").fadeIn();
+            });
+            $(".fadeOut").click(function() {
+                $("#PageOpenTimer").fadeOut();
+            });
+
+        </script>       
+    </body>
+</html>

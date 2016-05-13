@@ -12,8 +12,7 @@ CKEDITOR.editorConfig = function( config ) {
 	 config.skin = 'moonocolor';
 	 config.toolbarCanCollapse = true;
 	 //config.uiColor = '#AADC6E';
-
-	config.language_list = [ 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ar:Arabic', 'es:Spanish', 'fr:France', 'ru:Russian', 'zh:Cina' ];
+	config.language_list = [ 'it:Italian', 'he:Hebrew:rtl', 'pt:Portuguese', 'de:German', 'ar:Arabic', 'es:Spanish', 'fr:France', 'ru:Russian', 'zh:Cina' ];
 
 	//Initializes and loads the resources CKWebSpeech
       	config.extraPlugins = 'ckwebspeech';
@@ -44,6 +43,12 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'ckwebspeech'}, //Add the CKWebSpeech button on the toolbar
 		{ name: 'about', groups: [ 'about' ] }
 	];
+
+config.extraPlugins = 'autosave';
+config.autosave_SaveKey = 'autosaveKey';
+//config.autosave_NotOlderThen = 1440;
+config.autosave_saveOnDestroy = false;
+//config.autosave_saveDetectionSelectors = "a[href^='javascript:__doPostBack'][id*='Save'],a[id*='Cancel']";
 
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.

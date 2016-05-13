@@ -1198,10 +1198,10 @@ define('APPLOGIN','1.00');
 /************************************************************************/
 //carica la lingua se esiste
 $lang=lang();
-if (file_exists("../../applications/_reguser/lang/$lang.inc"))
-    include "../../applications/_reguser/lang/$lang.inc";
+if (file_exists("../applications/_reguser/lang/$lang.inc"))
+    include "../applications/_reguser/lang/$lang.inc";
 else
-    include "../../applications/_reguser/lang/it.inc";
+    include "../applications/_reguser/lang/it.inc";
 
 	$user=$_COOKIE["utente"];
 //	$user=user_getuser();
@@ -1224,11 +1224,11 @@ $spath = "../../users/$user/$cartella/$user";
 $tpath = "../D_Plus/datas/saves/$user"; //echo $spath."<br>".$tpath;
 if (file_exists("../D_Plus/datas/saves/$user") && $user!=""){
 	//echo "il file esiste"; echo "---------------".$spath."<br>"; echo "---------------------------".$tpath."<br>";
-    } /*else{
+    } else{
 	//echo "il file NON esiste";
     if (!copy($spath, $tpath)) { //echo "Copia di $spath non riuscita ...\n";
 }
-    }*/
+    }
 //-------------------------------------------------------------------------------------------------------------------------
 $user=$_COOKIE["utente"];
 $user_coloredatario=user_getkey($user,"user_coloredatario");
