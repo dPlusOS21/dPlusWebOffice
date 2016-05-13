@@ -1,5 +1,6 @@
 <?php
 define('BLOCKIP','1.00');
+
 /************************************************************************/
 /* FrameWork  test preview                                              */
 /* ==================================================================== */
@@ -8,6 +9,9 @@ define('BLOCKIP','1.00');
 /* it under the terms of the GNU General Public License as published by */
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
+
+
+
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
@@ -21,12 +25,25 @@ $updatefiles="../../users/".$utente."/".$cartella."/LibreOfficeWebData/"."none_u
 $maxFileSize=20000000;
 
 //echo ini_get('upload_max_filesize'), ", " , ini_get('post_max_size');
+
+
 // scarica le variabili che servono
 $dpath=$_GET['dpath']; //echo "PERCORSO ATTUALE: ".$dpath;
+
 $action=$_GET['action'];
 $appname ="LibreOfficeWeb";
 $zip_op=$_GET['zip_op'];
+
 $filename=$_GET['filename'];
+
+// test da abilitare con variabili di controllo solo al bisogno
+// ----------------------------------------------------------------------------------//
+// echo "<h3>Nome applicazione: ".$appname."</h3><br>";
+// echo "<h3>Nome applicazione Senza nulla: ".sec_title($appname)."</h3><br>";
+// echo "<h3>Path: ".$dpath."</h3><br>";
+// echo "<h3>Path dei files da aggiornare - updatefiles: ".$updatefiles."</h3><br>";
+// echo "<h3>Updatedir: ".$updatedir."</h3><br>";
+// ----------------------------------------------------------------------------------//
 
 //caricamento condizionale del "pesante" modulo ziplib
 //*
@@ -76,7 +93,9 @@ switch($lang){
 }
 
 /* ip block */
+
 $dpath=$_GET["dpath"];
+
 $actionlink="index.php?dpath=$dpath";
 ?>
 <html>
@@ -89,7 +108,7 @@ $actionlink="index.php?dpath=$dpath";
 	</head>
 <style>
 html { 
-  background: url(./images/bg.jpg) no-repeat center center fixed; 
+  background: url(http://ringvemedia.com/server//bg.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -191,17 +210,25 @@ section.content {
 //        padding: 10px 20px;     
 }
 </style>
+
+<!-- Adeguamento alla coesistenza di jquery con prototype library -->
+	<script type=”text/javascript”>
+//		JQ = jQuery.noConflict();
+	</script>
+<!------------------------------------------------------------------>
+
 <script>
-//----------------------------------------------------------------------------------------------------------
-// Adeguamento alla coesistenza di jquery con prototype library
+//<!-- Adeguamento alla coesistenza di jquery con prototype library -->
 //	JQ = jQuery.noConflict(); // metodo non verificato
 	JQ = $;  //rename $ function
 // si devono sostituire tutte le chiamate a jq con la variabile JQ
-//----------------------------------------------------------------------------------------------------------
+//<!------------------------------------------------------------------>
         JQ(document).ready(function() {
                 $menuLeft = JQ('.pushmenu-left');
                 $nav_list = JQ('#nav_list');
                 $nav_list1 = JQ('#nav_list1');
+
+
                 $nav_list.click(function() {
                         JQ(this).toggleClass('active');
                         JQ('.pushmenu-push').toggleClass('pushmenu-push-toright');
@@ -213,6 +240,9 @@ section.content {
                         $menuLeft.toggleClass('pushmenu-open');
                 });
         });
+</script>
+<!--------------------------------------------------------------------------------------------------------->
+<script>
 //----------------------------------------------------------------------------------------------------------
 // setting iniziale stato linea (online)
 	localStorage.setItem('statolinea', 'on');
@@ -235,9 +265,24 @@ limitations under the License.
 
 Author: Eric Bidelman (ericbidelman@chromium.org)
 -->
+
 <style>
+
 #connection {
   font: 20px Arial, sans-serif;
+/*  text-transform: uppercase; */
+/*  font-weight: bold;
+  vertical-align: middle;
+  -webkit-text-stroke: 0;
+  -moz-text-stroke: 0;
+  color: transparent;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-color: rgba(55,96,117,1);
+  text-shadow: rgba(255,255,255,0.5) 0 5px 6px, rgba(255,255,255,0.4) 1px 3px 3px;
+  border: 2px solid black;
+  border-radius: 25px;
+  padding: 25px; */
 }
 #connection div {
   display: inline-block;
@@ -259,6 +304,13 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
   -o-animation-timing-function: linear;
 }
 #connection.connected {
+/*  background-color: rgba(0, 55, 0, 1); 
+  border-color: green;
+  -webkit-box-shadow: 0 0 50px 0 #bbb;
+  -moz-box-shadow: 0 0 50px 0 #bbb;
+  -ms-box-shadow: 0 0 50px 0 #bbb;
+  -o-box-shadow: 0 0 50px 0 #bbb;
+  box-shadow: 0 0 50px 0 #bbb;*/
 }
 #connection.connected div {
   background-color: green;
@@ -273,6 +325,13 @@ Author: Eric Bidelman (ericbidelman@chromium.org)
   -o-animation-name: glowGreen;
 }
 #connection.disconnected {
+/*  background-color: rgba(55, 0, 0, 1);
+  border-color: red;
+  -webkit-box-shadow: 0 0 50px 0 #bbb;
+  -moz-box-shadow: 0 0 50px 0 #bbb;
+  -ms-box-shadow: 0 0 50px 0 #bbb;
+  -o-box-shadow: 0 0 50px 0 #bbb;
+  box-shadow: 0 0 50px 0 #bbb; */
 }
 #connection.disconnected div {
   background-color: red;
@@ -288,8 +347,10 @@ p {
   margin-top: 2em;
 }
 </style>
+
 <div id="connection" style="position:fixed; top:20px; right:20%; z-index: 30; " >Connecting...<div></div></div>
 <script>
+
 function updateConnectionStatus(msg, connected) {
   var el = document.querySelector('#connection');
   if (connected) {
@@ -344,10 +405,13 @@ window.addEventListener('offline', function(e) {
     <a href="index.php?action=search"><input type='image' src="../../applications/<?=$appname;?>/images/search.png" onclick="javascript: location.href='index.php?action=search';" title="[<?=_SEARCH?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_dir"><input type='image' src="../../applications/<?=$appname;?>/images/folder-add.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_dir';" title="[<?=_ADD_FOLDER?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="<?=$actionlink;?>&action=add_file"><input type='image' src="../../applications/<?=$appname;?>/images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
+<!--    <a href="Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx"><input type='image' src="../../applications/<?=$appname;?>/none_images/docx.png" onclick="javascript: location.href='Writer/index.php?dpath=<?=$dpath;?>&action=add_new_file_docx';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a> -->
 <?php
+if($dpath!='')$dpath="../".$dpath;
+if($dpath=='')$dpath="../../../users/$utente/$cartella/LibreOfficeWebData/";
 echo "<a><input type='image' src='../../applications/$appname/none_images/docx.png' onclick=\"javascript: getElementById('progetto').value=prompt('Nome Documento',''); if (getElementById('progetto').value != '') { newdocx.submit();};\" title=\"["._ADD_FILE."]\" border=0 WIDTH=\"32\" HEIGHT=\"32\" /></a>";
 echo "<form id='newdocx' name='newdocx' action='Writer/index.php?dpath=$dpath&progetto=$progetto&action=add_new_file_docx' method='post'>";
-echo "<input type='hidden' name='progetto' id='progetto' value=''>";
+echo "<input type='hidden' name='progetto' id='progetto' >";
 echo "</form>";
 ?>
     <a href="Calc/index.php?&action=addnewfilexlsx"><input type='image' src="../../applications/<?=$appname;?>/none_images/xlsx.png" onclick="javascript: location.href='Calc/index.php?&action=add_file';" title="[<?=_ADD_FILE?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
@@ -356,8 +420,11 @@ echo "</form>";
 
     <a href="<?=$actionlink;?>&action=add_link"><input type='image' src="../../applications/<?=$appname;?>/images/insert-link.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_link';" title="[<?=_ADD_LINK_WEB?>]" border=0 WIDTH="32" HEIGHT="32" /></a>
     <a href="/WEB_DESKTOP/OS/applications/_reguser/index.php?user_op=modavatar"> <input type='image' src="../../applications/<?=$appname;?>/images/setting.png" onclick="javascript: location.href='/WEB_DESKTOP/OS/applications/_reguser/index.php?user_op=modavatar';" title="<?=_MODIFICA_IMPOSTAZIONI?>" border=0 WIDTH="32" HEIGHT="32" /></a>
+
 </nav>
+ 
 </body>
+
 
 <style>
 div.ipuser
@@ -369,7 +436,9 @@ div.ipuser
 	background-color: LIGHTGRAY;
 	font-size: 12px;
 }
+
 /* Classe per la barra indirizzo (location) */
+
 span.location
 {
 	border: 1px solid #f0f0f0;
@@ -383,6 +452,7 @@ span.location
 	vertical-align:middle;
 	position:inline;
 }
+
 .location button {
 	border: 1px solid #FF3333;
 	border-radius: 3px 30px 30px 3px;
@@ -396,6 +466,7 @@ span.location
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .location button:hover {
 	border: 1px solid #FF0000;
 	border-radius: 3px 30px 30px 3px;
@@ -422,6 +493,7 @@ span.location
 	font-weight:bold;
 	font-size: 10px;
 }
+
 .location a:visited {
 	border: 1px solid #AAAAAA;
 	border-radius: 3px 30px 30px 3px;
@@ -436,6 +508,8 @@ span.location
 	font-weight:bold;
 	font-size: 12px;
 }
+
+
 .location a:hover {
 	border: 1px solid #333333;
 	border-radius: 3px 30px 30px 3px;
@@ -449,7 +523,10 @@ span.location
 	font-weight:bold;
 	font-size: 12px;
 }
+
+
 /*classe per la cosmetica */
+
 span.cosmetica
 {
 	border: 1px solid #f0f0f0;
@@ -463,6 +540,7 @@ span.cosmetica
 	vertical-align:middle;
 	position:inline;
 }
+
 .cosmetica button {
 	border: 1px solid #FF3333;
 	border-radius: 3px 3px 3px 3px;
@@ -475,6 +553,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica button:hover {
 	border: 1px solid #FF0000;
 	border-radius: 3px 3px 3px 3px;
@@ -487,6 +566,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica submit {
 	border: 1px solid #3333FF;
 	border-radius: 3px 3px 3px 3px;
@@ -499,6 +579,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica submit:hover {
 	border: 1px solid #0000FF;
 	border-radius: 3px 3px 3px 3px;
@@ -511,6 +592,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica a:link {
 	border: 1px solid #AAAAAA;
 /*	border-radius: 3px 3px 3px 3px; */
@@ -524,6 +606,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica a:visited {
 	border: 1px solid #AAAAAA;
 /*	border-radius: 3px 3px 3px 3px; */
@@ -537,6 +620,8 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
+
 .cosmetica a:hover {
 	border: 1px solid #333333;
 /*	border-radius: 3px 3px 3px 3px; */
@@ -550,6 +635,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica input {
 	border: 1px solid #AAAAAA;
 	border-radius: 5px 5px 5px 5px;
@@ -560,6 +646,7 @@ span.cosmetica
 	font-size: 12px;
 	vertical-align: middle;
 }
+
 .cosmetica input:hover {
 	border: 1px solid #333333;
 	border-radius: 3px 3px 3px 3px;
@@ -569,6 +656,7 @@ span.cosmetica
 	font-weight:bold;
 	font-size: 12px;
 }
+
 .cosmetica select {
 	border: 1px solid #AAAAAA;
 	border-radius: 5px 5px 5px 5px;
@@ -580,6 +668,7 @@ span.cosmetica
 	color: #444444;
 	font-size: 12px;
 }
+
 .cosmetica select:hover {
 	border: 1px solid #444444;
 	border-radius: 5px 5px 5px 5px;
@@ -637,17 +726,44 @@ else
  } 
 }
 //----------------------------------------------------------------------------------------------------------
+function audiocontrol(filename){
+    if(    document.getElementById("divplayer"+filename).style.display!='none'){
+    document.getElementById("divplayer"+filename).style.display='none';
+    document.getElementById("divdownloadfile"+filename).style.display='inline';
+    }
+    else{
+    document.getElementById("divplayer"+filename).style.display='inline';
+    document.getElementById("divdownloadfile"+filename).style.display='none';
+    }
+}
+//----------------------------------------------------------------------------------------------------------
+function amraudiocontrol(filename){
+localStorage.setItem('filename', filename);
+    if(    document.getElementById("amrdivplayer"+filename).style.display!='none'){
+    document.getElementById("amrdivplayer"+filename).style.display='none';
+    document.getElementById("divdownloadfile"+filename).style.display='inline';
+	localStorage.setItem('filename', filename);
+    }
+    else{
+    document.getElementById("amrdivplayer"+filename).style.display='inline';
+    document.getElementById("divdownloadfile"+filename).style.display='none';
+	localStorage.setItem('filename', filename);
+    }
+}
+//----------------------------------------------------------------------------------------------------------
 function servicecontrol(filename){
     if(    document.getElementById("divservice"+filename).style.display!='none'){
     document.getElementById("divservice"+filename).style.display='none';
     document.getElementById("divtipofile"+filename).style.display='inline';
     document.getElementById("divdownloadfile"+filename).style.display='inline';
+    document.getElementById("divplayer"+filename).style.display='none';
     document.getElementById("divradiostreamfile"+filename).style.display='none';
     }
     else{
     document.getElementById("divservice"+filename).style.display='inline';
     document.getElementById("divtipofile"+filename).style.display='none';
     document.getElementById("divdownloadfile"+filename).style.display='none';
+    document.getElementById("divplayer"+filename).style.display='none';
     document.getElementById("divradiostreamfile"+filename).style.display='none';
     }
 }
@@ -661,10 +777,17 @@ function locationcontrol(){
     }
 }
 //----------------------------------------------------------------------------------------------------------
+
+
 </script>
+
+
 <div class="ipuser" style="position:fixed; top: 0px; left: 0px; width:100%; z-index: 20;">
+
+
 <?php
 define('BLOCKIP','1.00');
+
 /************************************************************************/
 /* FrameWork  test preview                                              */
 /* ==================================================================== */
@@ -673,7 +796,11 @@ define('BLOCKIP','1.00');
 /* it under the terms of the GNU General Public License as published by */
 /* the Free Software Foundation; either version 2 of the License.       */
 /************************************************************************/
+
+
+
 //$theme=theme();
+
 //user login block
 //carica la lingua se esiste
 $lang="it";
@@ -692,6 +819,7 @@ switch($lang){
 	define("_EXIT","Exit");
 	define("_LOGIN","Login");
 	break;
+
     default:
 	define("_USER_LOGIN","User Login");
 	define("_USER","Utente");
@@ -708,12 +836,21 @@ switch($lang){
 	break;
 }
 
+
 $dpath=$_GET["dpath"];
+
 $actionlink="index.php?dpath=$dpath";
 ?>
+
 <input type='image' src="../../applications/<?=$appname;?>/images/menu.png" id="nav_list" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0"  align="left" />
 <input type='image' src="../../applications/<?=$appname;?>/none_images/Libre-Office.png" onclick="javascript: location.href='index.php';" title="Benvenuto in Libre Office Web" border=0 WIDTH="48" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <input type='image' src="../../applications/<?=$appname;?>/images/previous.png" onclick="javascript:window.history.back();" title="[Back]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+<!--	<input type='image' src="../../applications/<?=$appname;?>/images/search.png" onclick="javascript: location.href='index.php?action=search';" title="[Find]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+	<input type='image' src="../../applications/<?=$appname;?>/images/folder-add.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_dir';" title="[Add-Directory]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+	<input type='image' src="../../applications/<?=$appname;?>/images/uploads-file.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_file';" title="[Add-File]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+	<input type='image' src="../../applications/<?=$appname;?>/images/insert-link.png" onclick="javascript: location.href='<?=$actionlink;?>&action=add_link';" title="[Add-Link]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+	<input type='image' src="../../applications/<?=$appname;?>/images/shared.png" onclick="javascript: location.href='index.php';" title="Benvenuto in Files 3" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
+-->
 <input type='image' src="../../applications/<?=$appname;?>/images/system-help.png" onclick="javascript: location.href='index.php?action=help';" title="[Help]" border=0 WIDTH="42" HEIGHT="42" hspace="3" vspace="0" align="left" />
 <?    if ($user_avatar=="")$user_avatar="avtr00.png";
 		if (substr($user_avatar,0,4)=="http"){ ?>
@@ -723,8 +860,10 @@ $actionlink="index.php?dpath=$dpath";
 		<?php } ?>
 </div>
 <div id='barretta' style='position:fixed;  z-index: 20; top: 50px; height:5px; width:100%; background-color: red;' ></div>
+
 </html>
 <?php
+
 //=======================================================================================
 //
 // Copyright (c) 2013-2014 by vroby & Daniele
@@ -737,6 +876,8 @@ $actionlink="index.php?dpath=$dpath";
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation; either version 2 of the License.
 //=======================================================================================
+
+
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
@@ -768,7 +909,9 @@ $path_thumb = "../../users/$utente/$cartella/thumbnair";
 // echo "<h3>Path dei files da aggiornare - updatefiles: ".$updatefiles."</h3><br>";
 // echo "<h3>Updatedir: ".$updatedir."</h3><br>";
 // ----------------------------------------------------------------------------------//
-//
+
+
+//*/
 
 //fissa $siteurl se non finisce con /
 if (substr($siteurl,-1)!="/")$siteurl=$siteurl."/";
@@ -782,6 +925,7 @@ else
 
 //style.css
 echo "<link rel=\"StyleSheet\" href=\"../../applications/$appname/style.css\" type=\"text/css\">";
+
 
 //startUP
 //------------------------
@@ -821,6 +965,7 @@ function deltree($path){
 	rmdir($path);//BUG: non cancella con windows!!!!
     }
 }
+
 //__________________________________________________________________________________________________________________________________
 /**
  * La funzione copia un intero albero di directory in modo ricorsivo nel nuovo path
@@ -875,6 +1020,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     }
 }
 //__________________________________________________________________________________________________________________________________
+
 //carica in  un array l'elenco dei file di una directory
 function listdir($path){
 $utente=$_COOKIE["utente"];
@@ -889,6 +1035,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     return $filename;
 }
 //__________________________________________________________________________________________________________________________________
+
 //legge la descrizione di un file/dir
 function readdesc($f){
 $utente=$_COOKIE["utente"];
@@ -906,6 +1053,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     return $desc;
 }
 //__________________________________________________________________________________________________________________________________
+
 //scrive la descrizione di un file/dir
 function writedesc($f,$desc){
 $utente=$_COOKIE["utente"];
@@ -917,6 +1065,7 @@ $user_avatar=$_COOKIE['user_avatar'];
 	fclose($hf);
 }
 //__________________________________________________________________________________________________________________________________
+
 // comprime una cartella in un file da scaricare al volo
 function zip_dir($dpath){
 $utente=$_COOKIE["utente"];
@@ -945,6 +1094,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     $zipfile ->finish();
 }
 //__________________________________________________________________________________________________________________________________
+
 // visualizza la pagina di ricerca
 function search($dpath){
 $utente=$_COOKIE["utente"];
@@ -964,6 +1114,7 @@ if ($utente!=""){
 }
 }
 //__________________________________________________________________________________________________________________________________
+
 // cerca il file
 function exec_search($dpath){
 $utente=$_COOKIE["utente"];
@@ -974,12 +1125,14 @@ $user_avatar=$_COOKIE['user_avatar'];
     $appname ="LibreOfficeWeb";
     $pattern=$_POST['file'];
 
+
     echo "<br><br><left><div class='black_bold'><img src='../../applications/$appname/none_images/icon2.gif' border='0'> "._FINDINGFILES." <font class='black'>\"$pattern\"</font></div></left>";
     echo "<br>";
     $pattern=str_replace("*","",$pattern);
     $path="../../users/".$utente."/".$cartella."/LibreOfficeWebData/";
     if ($pattern!="")
 	searchdir($path,$pattern);
+
 
 	echo "<br><div align='left'><a href='index.php' class='' title='[Home]'><span style='border: 1px solid orange; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: orange; color: #FFFFFF; font-weight:bold; font-size: 12px;' class='button'>[Home]</span></a>&nbsp;&nbsp;";
     	echo "<a href='index.php?action=search' class='' title='["._NEW_SEARCH."]'><span style='border: 1px solid #0094FF; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #0094FF; color: #FFFFFF; font-weight:bold; font-size: 12px;' class=''>[Find]</span></a>&nbsp;&nbsp;";
@@ -1016,13 +1169,18 @@ $user_avatar=$_COOKIE['user_avatar'];
 		    }
 
 		    $actionlink="index.php?dpath=$dpath&filename=$filename";
+		    if ($utente!=""){
+			$rename_file="<img src='../../applications/$appname/none_images/icon2.gif' border='0'>[<a href='$actionlink&action=rename_file'>"._REN."</a>]";
+			$delete_file="<img src='../../applications/$appname/none_images/icon2.gif' border='0'>[<a href='$actionlink&action=delete_file'>"._DEL."</a>]";
+			$cut_file="<img src='../../applications/$appname/none_images/icon2.gif' border='0'>[<a href='$actionlink&action=cut_file'>"._CUT."</a>]";
+			}
 
 		    if ($ext[substr($filename,-3)]!="")
-			$picture="<img src='../../applications/$appname/none_images/".$ext[substr($filename,-3)]."' border='0' width='40px' height='40px'>";
+			$picture="<img src='../../applications/$appname/none_images/".$ext[substr($filename,-3)]."' border='0'>";
 		    else
-			$picture="<img src='../../applications/$appname/none_images/unknown.png' border='0' width='40px' height='40px'>";
+			$picture="<img src='../../applications/$appname/none_images/unknown.png' border='0'>";
 		    if (substr($filename,-2)=="gz")
-			$picture="<img src='../../applications/$appname/none_images/tgz.png' border='0' width='40px' height='40px'>";
+			$picture="<img src='../../applications/$appname/none_images/tgz.png' border='0'>";
 
 		 // Visualizza Files trovati
 			echo "<table border='0' width='100%'><tr>";
@@ -1036,17 +1194,44 @@ $user_avatar=$_COOKIE['user_avatar'];
             echo "<a href='$actionlink&action=download'><font class='red_bold'>$filename</font></a>";
 			echo"<font class='black'> - "._RILASCIO." </font> ".date("j.m.y",filemtime("$dpath/$filename"))."";
 
+
 			if(strtolower(substr($filename,-4))<>".lnk"){
 			echo "<font class='black'> - "._SIZE_FILE." </font>".round(filesize("$dpath/$filename")/1000)."Kb ";
 			}
 			else
 			echo "<font class='black'> - "._FILE_REMOTO." </font>";
 
+
+		    echo"<font class='black'> - Downloads: </font> $count";
 			$dpath1="$dpath/$filename";
+			if(file_exists("$dpath1.updateby.description")){
+				if(filesize("$dpath1.updateby.description")>1){
+				echo "<br><font class='black'>"._UPDATEBY." </font>";
+				$updateby=trim(join(file("$dpath1.updateby.description")));
+				echo"<a href='forum/index.php?op=profile&amp;user=$updateby'>$updateby</a>";
+				}
+			}
+
+			if(file_exists("$dpath1.version.description")){
+				if(filesize("$dpath1.version.description")>1){
+				echo "<font class='black'> - "._VERSION." </font>";
+				readfile("$dpath1.version.description");
+				}
+			}
 			echo "<br>";
+
+
+			if(file_exists("$dpath1.description")){
+				if(filesize("$dpath1.description")>1){
+				echo "<font class='grey_bold'>"._DESCRIPTION." </font>";
+				readfile("$dpath1.description");
+				}
+			}
 			echo "</td>";
 		    echo "<td align='right' valign=top >";
 		    if ( filemtime("$dpath/$filename")> mktime (0,0,0,date("m"),date("d")-5,  date("Y")))
+			echo"<img src='../../applications/$appname/none_images/new.gif'>";
+
 			echo "</tr></table>";
 			echo "</td></tr></table>";
 		}
@@ -1056,6 +1241,7 @@ $user_avatar=$_COOKIE['user_avatar'];
     }
 }
 //__________________________________________________________________________________________________________________________________
+
 // visualizza l'help
 function help($dpath){
 	$siteurl=$_GLOBALS['siteurl'];
@@ -1063,18 +1249,25 @@ function help($dpath){
  	echo ""._HELP_TXT."<br />";
 }
 //__________________________________________________________________________________________________________________________________
+
 // sposta il file uploadato/submitted nel file system visibile
 function update_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
+
 	$siteurl=$_GLOBALS['siteurl'];
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$updatedir=$_GET['updatedir'];
+
  	copy ("$updatedir/$filename",$dpath.$filename);
 	unlink("$updatedir/$filename");
+
+	////////////////////////////////////////////////touch_path($dpath.$filename);
+
 	echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._FILE_ACCEPTED."!</font><br/>";
 	echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
 	}
@@ -1082,14 +1275,17 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // chiede il nome del link
 function add_link($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $myforum=$_COOKIE['myforum'];
     $appname ="LibreOfficeWeb";
     $siteurl=$_GLOBALS['siteurl'];
+
  // Admin form link user
     echo "<br><br><br><br><table border='0' class='file' width='100%' style='padding:10px'>
     <form  name='addfile' enctype='multipart/form-data' action='".$siteurl."index.php?dpath=$dpath&action=exec_add_link' method='post'>
@@ -1108,22 +1304,28 @@ $user_avatar=$_COOKIE['user_avatar'];
     </tr>
 	</form>
     </table>";
+
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue il caricamento del link
 function exec_add_link($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
+
 	$name=$_POST['name'];
 	$link=$_POST['link'];
 	$desc=stripslashes($_POST['desc']);
 	$vers=$_POST['vers'];
+
 	$myforum=$_COOKIE['myforum'];
 	$uploaddir = $dpath;
+
 	if ($utente!=""){
 	    $hf=fopen("$uploaddir/".$name.".lnk","w");
 	    fwrite($hf,"$link");
@@ -1136,7 +1338,49 @@ $user_avatar=$_COOKIE['user_avatar'];
     else
 	die(_NONPUOI);
 }
+//__________________________________________________________________________________________________________________________________
+
+//crea la thumbnails di una foto
+function mkthumbs($source,$dest){
+    //x:y=64:n
+    //n=y*64/n
+    list($w,$h)=getimagesize($source);
+    if ($w>160){
+	$nw=160;
+	$nh=160*$h/$w;
+    }
+    else{
+	$nw=$w;
+	$nh=$h;
+    }
+    $thumb=imagecreatetruecolor($nw,$nh);
+
+    if (strtolower(substr($source,-3))=="gif"){
+	$foto=imagecreatefromgif($source);
+	imagecopyresized($thumb,$foto,0,0,0,0,$nw,$nh,$w,$h);
+	imagegif($thumb,$dest);
+    }
+
+    if (strtolower(substr($source,-3))=="jpg"){
+	$foto=imagecreatefromjpeg($source);
+	imagecopyresized($thumb,$foto,0,0,0,0,$nw,$nh,$w,$h);
+	imagejpeg($thumb,$dest);
+    }
+
+    if (strtolower(substr($source,-4))=="jpeg"){
+	$foto=imagecreatefromjpeg($source);
+	imagecopyresized($thumb,$foto,0,0,0,0,$nw,$nh,$w,$h);
+	imagejpeg($thumb,$dest);
+    }
+
+    if (strtolower(substr($source,-3))=="png"){
+	$foto=imagecreatefrompng($source);
+	imagecopyresized($thumb,$foto,0,0,0,0,$nw,$nh,$w,$h);
+	imagepng($thumb,$dest);
+    }
+}
 //-------------------------------------------------------------------------------------------------------
+
 function new_file_docx($dpath){
 echo "<br>";
 echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."/Writer/index.php?dpath=$dpath&action=add_new_file_docx\">";
@@ -1154,15 +1398,19 @@ function new_file_odg($dpath){
 function new_file_odb($dpath){
 }
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 // chiede il nome del file
 function add_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $maxFileSize; $maxFileSize=200000000;
     $myforum=$_COOKIE['myforum'];
     $appname ="LibreOfficeWeb";
     $siteurl=$_GLOBALS['siteurl'];
+
+
 echo "
 <script>
 /* Script written by Adam Khoury @ DevelopPHP.com */
@@ -1201,6 +1449,8 @@ function abortHandler(event){
 }
 </script>
 ";
+
+
  // Admin form link
     echo "<br><br><br><br>
 	<table border='0' class='file' width='100%' style='padding:10px'>
@@ -1224,25 +1474,34 @@ function abortHandler(event){
     </tr>
 	</form>
     </table>";
+
 }
 //__________________________________________________________________________________________________________________________________
+
 // visualizza opzioni della directory
 function vedi_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
 $actionlink="index.php?dpath=$dpath&filename=$filename";
 $actionlink_vedi="index.php?dpath=$dpath$filename/";
+
 $zip_dir="<center><br><br><br><br><span class='cosmetica' valign='center' ><a href='index.php?zip_op=zipdir&dpath=$dpath&filename=$filename' class='' title='[Download-Zip-Directory]' align='top'>[Download Zip: $filename]</a></span></center>";
+
 ?>
 <div id='menu' name='menu' style='z-index:20; width:100%; height:280px; background-color: #E8E8E8; position:fixed; top: 55; left: 0px; border: 0px solid grey;  padding: 3px 3px 3px 3px; -moz-border-radius: 3px 3px 3px 3px; -webkit-border-radius: 3px 3px 3px 3px; box-shadow: 5px 5px 3px GRAY;'>
 <div class="" style="height:100%;background-color: #E8E8E8; border:none;">
 <br>
+
 <? //echo "$cut_dir  $rename_dir  $delete_dir"; ?><br>
+
 <? echo " $zip_dir "; ?><br><br><br><center>
+
 <img src="../../applications/<?=$appname;?>/images/delete.png" title='[Delete-Directory]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=delete_dir';">
 <img src="../../applications/<?=$appname;?>/images/space.png" style=" width:28px; height:28px;">
 <img src="../../applications/<?=$appname;?>/images/rename.png" title='[Rename-Directory]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=rename_dir';">
@@ -1250,17 +1509,23 @@ $zip_dir="<center><br><br><br><br><span class='cosmetica' valign='center' ><a hr
 <img src="../../applications/<?=$appname;?>/images/clipboard.png" title='[Clipboard-Directory]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=cut_dir';">
 <img src="../../applications/<?=$appname;?>/images/space.png" style=" width:28px; height:28px;">
 <img src="../../applications/<?=$appname;?>/images/folder.png" title="[Apri-Directory]" style="  width:48px; height:48px;" onclick="javascript:location='<?=$actionlink_vedi;?>';"></center>
+
 <?php
+
 }
+
 //__________________________________________________________________________________________________________________________________
+
 // visualizza opzioni del file
 function vedi_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
 $actionlink="index.php?dpath=$dpath&filename=$filename";
 $actionlink_vedi="index.php?dpath=$dpath$filename/";
 echo "<br>";
@@ -1269,36 +1534,52 @@ $zip_dir="<center><br><span class='cosmetica' valign='center' ><a href='index.ph
 $vedilink = "<a class='' title='[View Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='visualizza(\"$viewlink\");'><span class=''>$picture</span></a>";
 $modlink = "<a class='' title='[Modify Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='visualizza(\"$viewlink\");'><span class=''></span></a>";
 $downlink = "<center><button style='border: 1px solid #AAAAAA; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #EEEEEE; color: #000000; font-weight:bold; font-size: 12px;' align='center' onclick=\"location='$siteurl$dpath$filename'\" title='[Download: $filename]'>[Download: $filename]</button></center>";
+
 $preview="$dpath/$filename";
+
 ?>
 <div id='menufile' name='menufile' style='width:100%; height:80%; background-color: #E8E8E8; position:fixed; top: 55; left: 0px; border: 0px solid grey;  padding: 3px 3px 3px 3px; -moz-border-radius: 3px 3px 3px 3px; -webkit-border-radius: 3px 3px 3px 3px; box-shadow: 5px 5px 3px GRAY;'>
 <div class="" style="height:100%;background-color: #E8E8E8; border:none;">
+
+
 <?php if (strtolower(substr($filename,-4))=='.lnk' || strtolower(substr($filename,-4))=='.pdf' || strtolower(substr($filename,-4))=='.doc' || strtolower(substr($filename,-4))=='.xls' || strtolower(substr($filename,-4))=='xlsx' || strtolower(substr($filename,-4))=='docx' ){
    echo "<br>";
 } else { echo "<center><a href='$preview' rel='lightbox'><img src='$preview' border='0' width='100' height='70'/></a></center><br>"; }
+
 ?>
+
 <? echo " $vedilink $modlink $downlink"; ?><br><center>
+
 <img src="../../applications/<?=$appname;?>/images/delete.png" title='[Delete-File]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=delete_file';">
 <img src="../../applications/<?=$appname;?>/images/space.png" style=" width:28px; height:28px;">
 <img src="../../applications/<?=$appname;?>/images/rename.png" title='[Rename-File]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=rename_file';">
 <img src="../../applications/<?=$appname;?>/images/space.png" style=" width:28px; height:28px;">
 <img src="../../applications/<?=$appname;?>/images/clipboard.png" title='[Clipboard-File]' style=" width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>&action=cut_file';">
 <img src="../../applications/<?=$appname;?>/images/space.png" style=" width:28px; height:28px;">
+
 <img src="../../applications/<?=$appname;?>/images/fileopen.png" title="[Apri-File]" style="  width:48px; height:48px;" onclick="javascript:location='<?=$actionlink;?>';"></center>
+
 </div></div>
 <?php
+
 }
+
 //__________________________________________________________________________________________________________________________________
+
 // chiede il nuovo nome del file
 function rename_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
  // Admin form link
+
     echo "<br>";
+
     echo "<table border='0' class='file'  width='100%' style='padding:10px'>
     <form name='renamefile' action='index.php?dpath=$dpath&filename=$filename&action=exec_rename_file' method='POST' enctype='multipart/form-data'>
     <tr>
@@ -1309,20 +1590,24 @@ $user_avatar=$_COOKIE['user_avatar'];
 		    <td width='20%' class='black'></td><td><a>"._NUOVO_FILE_LINK."</a><br><input 'type=text name='namelink' value='".join(file($dpath.$filename))."' size='30%'></td>
 		</tr>";
     }
+
     echo"<tr>
     <td></td><td>
 	<br><button style='border: 1px solid #41A317; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #41A317; color: #FFFFFF; font-weight:bold; font-size: 12px;'><span >"._RENAME_FILE."</span></button>
 	<a href='index.php?dpath=$dpath' title='"._ANNULLA."'><span style='border: 1px solid red; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: red; color: #FFFFFF; font-weight:bold; font-size: 12px;'>"._ANNULLA."</span></a>
+
     </tr>
 	</form>
     </table>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue la rinomina del file
 function exec_rename_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
@@ -1331,19 +1616,25 @@ $user_avatar=$_COOKIE['user_avatar'];
 	if (strtolower(substr($filename,-4))=='.lnk')
 		$namelink=$_POST['namelink'];
 	$deletepreview= $_POST['deletepreview'];
+
 	if (file_exists($dpath.$filename))
 	    rename($dpath.$filename,$dpath.$namefile);
+
 	if (file_exists("../../users/$utente/$cartella/thumbnair/".$filename))
 	    rename("../../users/$utente/$cartella/thumbnair/".$filename,"../../users/$utente/$cartella/thumbnair/".$namefile);
+
 	if ($filename !=$namefile)
+
 	if (strtolower(substr($namefile,-4))=='.lnk' && trim(@join(@file($dpath.$namefile)))!=trim($namelink) ){
 	    $hf=fopen($dpath.$namefile,"w");
     	    fwrite($hf,"$namelink");
 	    fclose($hf);
 	}
+
 	$uploaddir = $dpath;
 	if ($_FILES['file']['tmp_name']!=""){
 	    if (move_uploaded_file($_FILES['file']['tmp_name'], $uploaddir .$namefile) ) {
+
 		chmod($uploaddir . $namefile,0775);
 	    }else {
 		echo" errore <br/>";
@@ -1357,19 +1648,24 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue lo spostamento del file
 function cut_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     if ($utente!=""){
 	$appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
 	$updatedir="$updatefiles/";
+
+
 	copy($dpath.$filename,$updatedir.$filename);
 	unlink($dpath.$filename);
+
 	echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._FILE_SPOSTATO."!</font><br/>";
 	echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
     }
@@ -1377,14 +1673,17 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // cancella il file
 function delete_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
     echo "<br><br><br><br>";
     echo "<center><form name='deletedir' action='index.php?dpath=$dpath&filename=$filename&action=exec_delete_file' method='POST'>
 	<div class='black_bold'>"._IN_FILE."$dpath$filename</div><br><br>
@@ -1393,15 +1692,18 @@ $user_avatar=$_COOKIE['user_avatar'];
 	</form></center>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue la cancellazione del file
 function exec_delete_file($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
+
 	if (unlink($dpath.$filename)!=true){ 
 	    echo "<br><br><br><br><font class='black_bold'>"._IN_FILE."$dpath$filename</font><br><br>
 		<input type='button' value='"._ANNULLA."' onclick=\"javascript:window.location.href='".$siteurl."index.php?dpath=$dpath';\">
@@ -1417,15 +1719,19 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // chiede il nome della directory
 function add_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $lang;
     $appname ="LibreOfficeWeb";
     $siteurl=$_GLOBALS['siteurl'];
+
  // Admin form link
+
     echo "<br><br><br><br>";
     echo "<table border='0' class='file' width='100%' style='padding:10px'>
     <form name='adddir' action='index.php?dpath=$dpath&action=exec_add_dir' method='POST' enctype='multipart/form-data'>
@@ -1457,18 +1763,24 @@ $user_avatar=$_COOKIE['user_avatar'];
     </table>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue la creazione della directory
 function exec_add_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
 	$namedir=$_POST['namedir'];
 	$descdir=stripslashes($_POST['descdir']);
+
+
+
 	mkdir($dpath.$namedir,0775);
 	//chmod($dpath.$namedir,0775);
+
 	echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._DIR_ADDED."!</font><br/>";
     echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
 	}
@@ -1476,14 +1788,17 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // chiede il nuovo nome della directory
 function rename_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
  // Admin form link
     echo "<br><br><br><br>";
     echo "<table border='0' class='file'  width='100%' style='padding:10px'>
@@ -1500,18 +1815,22 @@ $user_avatar=$_COOKIE['user_avatar'];
     </table>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue la rinomina della directory
 function exec_rename_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$siteurl=$_GLOBALS['siteurl'];
 	$filename=$_GET['filename'];
 	$namedir=$_POST['namedir'];
 	$desc=stripslashes($_POST['desc']);
+
  	rename($dpath.$filename,$dpath.$namedir);
+
 	echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._DIR_RENAMED."!</font><br>";
 	echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
     }
@@ -1519,11 +1838,13 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 // taglia la directory
 function cut_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
@@ -1540,16 +1861,19 @@ $user_avatar=$_COOKIE['user_avatar'];
 
 }
 //__________________________________________________________________________________________________________________________________
+
 // incolla la directory
 function update_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
+
 	$source="$updatefiles/$filename";
 	$dest=$dpath.$filename;
 	copytree($source,$dest);
@@ -1557,50 +1881,62 @@ $user_avatar=$_COOKIE['user_avatar'];
     }
     echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._DIR_UPDATED."!</font><br>";
     echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
+
 }
 //__________________________________________________________________________________________________________________________________
+
 // elimina la directory tagliata
 function delete_update_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
     echo "<br>";
     echo "<form name=deletedir>
 	<div class='black_bold'>"._IN."$updatefiles$filename</div><br><br>
 	<a href='index.php?dpath=$dpath&filename=$filename&action=exec_delete_update_dir' style='border: 1px solid #41A317; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #41A317; color: #FFFFFF; font-weight:bold; font-size: 12px;'><span class='label'>"._CANCELLA_DIR."</span></a>&nbsp;&nbsp;
 	<a href='index.php?dpath=$dpath' title='"._ANNULLA."'><span style='border: 1px solid red; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: red; color: #FFFFFF; font-weight:bold; font-size: 12px;'>"._ANNULLA."</span></a>
+
 	</form><br><br>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue l'eliminazione della directory tagliata
 function exec_delete_update_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
+
 	$source="$updatefiles/$filename";
 	deltree($source);
     }
     echo "<br><br><img src='../../aplications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._FILE_DELETED."!</font><br/>";
     echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
+
 }
 //__________________________________________________________________________________________________________________________________
+
 // cancella la directory
 function delete_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
     echo "<br><br><br><br>";
     echo "<form name=deletedir>
 	<div class='black_bold'>"._IN."$dpath$filename</div><br><br>
@@ -1610,15 +1946,18 @@ $user_avatar=$_COOKIE['user_avatar'];
 	</form><br><br><br>";
 }
 //__________________________________________________________________________________________________________________________________
+
 // esegue la cancellazione della directory
 function exec_delete_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
+
 	if (@rmdir($dpath.$filename)!=true){
 	    echo "<br><font class='red_bold'>"._DIR_IN."$dpath$filename "._NOT_EMPTY." </font><br><br>
 	    <input type='button' value='"._CANCELLA_TREE."' onclick=\"javascript:window.location.href='".$siteurl."index.php?dpath=$dpath&filename=$filename&action=exec_deltree_dir';\">
@@ -1634,15 +1973,19 @@ $user_avatar=$_COOKIE['user_avatar'];
 	die(_NONPUOI);
 }
 //__________________________________________________________________________________________________________________________________
+
 //esegue la cancellazione del'uintero albero di directory
 function exec_deltree_dir($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     if ($utente!=""){
         $appname ="LibreOfficeWeb";
 	$filename=$_GET['filename'];
 	$siteurl=$_GLOBALS['siteurl'];
+
+
 	deltree($dpath.$filename);
 	echo "<br><br><img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>"._DIR_DELETED."!</font><br/>";
 	echo "<meta http-equiv=\"Refresh\" content=\"0; URL=".$siteurl."index.php?dpath=$dpath\">";
@@ -1650,15 +1993,19 @@ $user_avatar=$_COOKIE['user_avatar'];
     else
 	die(_NONPUOI);
 }
+
 //__________________________________________________________________________________________________________________________________
+
 // esegue il download richiesto e incrementa il contatore dei download per il file
 function download($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     $appname ="LibreOfficeWeb";
     $filename=$_GET['filename'];
     $siteurl=$_GLOBALS['siteurl'];
+
     if (substr($dpath.$filename,-4)==".lnk"){
 	echo"<br><br><br><br><br><span ><a href='".join(file("$siteurl$dpath$filename"))."' style='border: 1px solid #41A317; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #41A317; color: #FFFFFF; font-weight:bold; font-size: 12px;' title='If do not start download please click [Download: $filename]'><span class=''></span><span class=''>[Download: $filename]</span></a></span>";
 	echo "<a href='index.php?dpath=$dpath' title='"._CONTINUA."'><span style='border: 1px solid red; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: red; color: #FFFFFF; font-weight:bold; font-size: 12px;'>"._CONTINUA."</span></a>";
@@ -1669,13 +2016,16 @@ $user_avatar=$_COOKIE['user_avatar'];
     }
 }
 //__________________________________________________________________________________________________________________________________
+
 // stampa il path con i relativi link
 function dirtitle($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
 $dalevare=7+strlen($utente)+1+strlen($cartella)+1;
 //echo $dalevare."<br>$user_lung<br>$cartella_lung<br>";
+
     $appname ="LibreOfficeWeb";
     $a=0;
     $dirlist="";
@@ -1705,26 +2055,33 @@ $dalevare=7+strlen($utente)+1+strlen($cartella)+1;
 }
 }
 //__________________________________________________________________________________________________________________________________
+
 // visualizza il contenuto di dpath
 function dirlist($dpath){
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
 $appname ="LibreOfficeWeb";
+
 $utente=$_COOKIE["utente"];
 $cartella=$_COOKIE["cartella"];
 $user_avatar=$_COOKIE['user_avatar'];
+
     global $updatefiles;
     $appname ="LibreOfficeWeb";
     $siteurl=$_GLOBALS['siteurl'];
     $updatedir ="$updatefiles";
-    if ($utente!=""){
-	$extfs=opendir("../../applications/$appname/none_images");
-		while (false !== ($extimg= readdir($extfs))){
-				if (substr($extimg,-4)==".png")
-				    $ext[substr(substr($extimg,0,-4),-3)]=$extimg;
-		}
+
+	if ($utente!=""){
+
+    $extfs=opendir("../../applications/$appname/none_images");
+    while (false !== ($extimg= readdir($extfs))){
+	if (substr($extimg,-4)==".png")
+	    $ext[substr(substr($extimg,0,-4),-3)]=$extimg;
+    }
     closedir($extfs);
+
 // Directory
     if (!file_exists($dpath)){
 	echo _PATH_ERROR;
@@ -1734,6 +2091,7 @@ $user_avatar=$_COOKIE['user_avatar'];
 	foreach(listdir($dpath) as $filename){
 	    if ($filename !="." && $filename !=".."){
 		if (is_dir($dpath.$filename)!=false && substr_count($dpath.$filename,"/none_")==0 ){
+
 		    $i= ($i+1)& 1;
 //		    $zip_dir="<a href='".$siteurl."index.php?appname=".$appname."&zip_op=zipdir&dpath=$dpath&filename=$filename'> <font class='black_bold'>Download directory</font></a>";
 		    	$actionlink="index.php?dpath=$dpath&filename=$filename";
@@ -1771,10 +2129,12 @@ $user_avatar=$_COOKIE['user_avatar'];
 		}
 	    }
 	}
+
     // Files
 	foreach(listdir($dpath) as $filename){
 	    if ($filename !="." && $filename !=".." && substr_count($filename,".description")==0 && substr($filename,-6)!=".count"){
 		if (is_dir("$dpath/$filename")==false){
+
 		    echo "<a name='".str_replace("/","-",$dpath.$filename)."'>";
 		    $f=$dpath.$filename.".count";
 		    if (file_exists($f)){
@@ -1787,10 +2147,18 @@ $user_avatar=$_COOKIE['user_avatar'];
 		    }
 		    $i= (($i+1)& 1)+2;
 		    $actionlink="index.php?dpath=$dpath&filename=$filename";
+
 $estensione=substr($filename,-3);
 $radiostream="";
 $ascolta_file="";
+
    switch($estensione){
+	case "css":
+	    $viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "php":
+	    $viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
 	case "txt":
 	    $viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
 	    break;
@@ -1822,14 +2190,87 @@ $ascolta_file="";
 	    //$viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con google document viewer online
 	    //$viewlink="https://view.officeapps.live.com/op/view.aspx?src=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con microsoft document viewer online
 //	    break;
+	case "gif":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "png":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "jpg":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "peg":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "bmp":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "ico":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "tif":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "ico":
+	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "lnk":
+	    $viewlink="".file_get_contents($dpath.$filename)."";
+	    break;
+	case "ogv":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "mp3":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    $ascolta_file = "<div id='divplayer$filename' style='display:none;' ><table><audio id='player$filename' src='$dpath/$filename'></audio>
+<tr><td>	<img src='../../applications/$appname/images/vol-play.png' onclick=\"document.getElementById('player$filename').play()\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-pause.png' onclick=\"document.getElementById('player$filename').pause()\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-stop.png' onclick=\"document.getElementById('player$filename').pause();document.getElementById('player$filename').currentTime = 0;\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-up.png' onclick=\"document.getElementById('player$filename').volume+=0.1\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-down.png' onclick=\"document.getElementById('player$filename').volume-=0.1\" align='left' border='0' width='42' height='42' ></td></tr></table></div>";
+	//echo "<script>document.getElementById('divplayer$filename').style.display='none';</script>";
+	    break;
+	case "wma":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "mp4":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "mov":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    break;
+	case "amr":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    $ascolta_file = "<div  id='divplayer$filename' style='display:none;' ><table><audio id='player$filename' src='$dpath/$filename'></audio>
+<tr><td>	<input type='image' id='amrplayer$filename' src='../../applications/$appname/images/vol-play.png' onclick='javascript:localStorage.setItem(\"filename\", \"$filename\");' align='left' border='0' width='42' height='42' ></td></tr></table></div>";
+	    break;
+	case "ogg":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    $ascolta_file = "<div  id='divplayer$filename' style='display:none;' ><table><audio id='player$filename' src='$dpath/$filename'></audio>
+<tr><td>	<img src='../../applications/$appname/images/vol-play.png' onclick=\"document.getElementById('player$filename').play()\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-pause.png' onclick=\"document.getElementById('player$filename').pause()\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-stop.png' onclick=\"document.getElementById('player$filename').pause();document.getElementById('player$filename').currentTime = 0;\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-up.png' onclick=\"document.getElementById('player$filename').volume+=0.1\" align='left' border='0' width='42' height='42' ></td>
+	<td>	<img src='../../applications/$appname/images/vol-down.png' onclick=\"document.getElementById('player$filename').volume-=0.1\" align='left' border='0' width='42' height='42' ></td></tr></table></div>";
+	//echo "<script>document.getElementById('divplayer$filename').style.display='none';</script>";
+	    break;
+	case "emb":
+ 	    $viewlink="http://".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+	    $radiostream="".file_get_contents($dpath.$filename)."";
+	    break;
+
     }
+
 $estensione=substr($filename,-2);
+
    switch($estensione){
 	case "js":
 	    $viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
 	    break;
     }
+
 $estensione=substr($filename,-4);
+
    switch($estensione){
 	case "xlsx":
 	    //$viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con google document viewer online
@@ -1840,14 +2281,19 @@ $estensione=substr($filename,-4);
 	    $viewlink="https://view.officeapps.live.com/op/view.aspx?src=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con microsoft document viewer online
 	    break;
     }
+
 //echo "ECCO LA ESTENSIONE: ".$estensione;
+
 //		    $viewlink="http://docs.google.com/viewer?url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename."";
+
 		    if ($utente!=""){
 			$cut_file="<a href='$actionlink&action=cut_file' class='' title='[Clipboard]'><img  src='../../applications/$appname/images/clipboard.png' align='right' border='0' width='42' height='42' ></a>";
 			$rename_file=" <a href='$actionlink&action=rename_file' class='' title='[Rename]'><img src='../../applications/$appname/images/rename.png' align='right' border='0' width='42' height='42' ></a>";
 			$delete_file="<a href='$actionlink&action=delete_file' class='' title='[Delete]'><img src='../../applications/$appname/images/delete.png' align='right' border='0' width='42' height='42' ></a>";
 //			$menu="<img src='../../applications/$appname/images/menu.png' title='[Menù]' align='right' border='0' width='25' height='25' onclick='javascript:menu($menuname);'>";
+
 		    }
+
 		    if ($ext[substr($filename,-3)]!="") 
 			$picture="<img src='../../applications/$appname/none_images/".$ext[substr($filename,-3)]."' align='left' border='0' width='42' height='42' >";
 		    else
@@ -1855,13 +2301,21 @@ $estensione=substr($filename,-4);
 		    if (substr($filename,-2)=="gz")
 			$picture="<img src='../../applications/$appname/none_images/tgz.png' align='left' border='0' width='42' height='42' >";
 
+		    if (substr($filename,-2)=="js")
+			$picture="<img src='../../applications/$appname/none_images/js.png' align='left' border='0' width='42' height='42' >";
+
 		    if ( strtolower(substr($filename,-4))=="docx")
 			$picture="<img src='../../applications/$appname/none_images/docx.png' align='left' border='0' width='42' height='42' >";
 
 		    if ( strtolower(substr($filename,-4))=="xlsx")
 			$picture="<img src='../../applications/$appname/none_images/xlsx.png' align='left' border='0' width='42' height='42' >";
 
+		    if (strtolower(substr($filename,-3))=="jpg" || strtolower(substr($filename,-4))=="jpeg" || strtolower(substr($filename,-3))=="bmp" || strtolower(substr($filename,-3))=="tif" || strtolower(substr($filename,-3))=="gif" || strtolower(substr($filename,-3))=="png" || strtolower(substr($filename,-3))=="ico" )
+			$picture="";
+
 		    $preview="";
+		    if (strtolower(substr($filename,-3))=="png" || strtolower(substr($filename,-3))=="gif" || strtolower(substr($filename,-3))=="jpg" || strtolower(substr($filename,-4))=="jpeg" || strtolower(substr($filename,-3))=="bmp" || strtolower(substr($filename,-3))=="tif" || strtolower(substr($filename,-3))=="ico")
+			$preview="$dpath/$filename"; $preview_thumb="../../users/$utente/$cartella/thumbnair/$filename";
 
 		    $ico="<img src='../../applications/$appname/none_images/icon8.gif' valign='middle' border='0'>";
 		    echo "<table width='100%' border='0' style='position:relative; top: -25px;'>";
@@ -1870,6 +2324,8 @@ $estensione=substr($filename,-4);
 		    echo "<table width='100%' border='0' cellspacing='0'><tr>";
 		    echo "<td  valign='center' align='center' width='2'>";
 
+		    if ($preview!="")echo "<a href='$preview' rel='lightbox'><img src='$preview_thumb' border='0' width='80' height='50'/></a>";
+		    //echo "$picture";
 		    $vedi_file="
                                <img src='../../applications/$appname/images/info.png' title='[Vedi-File]' onClick='servicecontrol(\"$filename\");' align='right' border='0' width='42' height='42' >";
 
@@ -1882,19 +2338,66 @@ $estensione=substr($filename,-4);
 	<td> <img src='../../applications/$appname/images/fileopen.png' title='[Vedi-File]' style=' width:48px; height:48px;' onclick=\"javascript:location='$actionlink&action=vedi_file&vedilink=$viewlink';\"></td>
 	</tr></table></div>";
 
-		    $vedilink = "<div  id='divtipofile$filename'><a class='' title='[View Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='visualizza(\"$viewlink\");'><span class=''>$picture</span></a></div>";
+			if (substr($filename,-3)=="mp3" || substr($filename,-3)=="ogg" || substr($filename,-3)=="amr" ) {
+			    $vedilink = "<div  id='divtipofile$filename'><a class='' title='[View Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='audiocontrol(\"$filename\");'><span class=''>$picture</span></a></div>";
+			} else if (substr($filename,-3)=="amr") {
+			    $vedilink = "<div  id='divtipofile$filename'><a class='' title='[View Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='amraudiocontrol(\"$filename\");'><span class=''>$picture</span></a></div>";
+			} else {  
+			    $vedilink = "<div  id='divtipofile$filename'><a class='' title='[View Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='visualizza(\"$viewlink\");'><span class=''>$picture</span></a></div>";
+			}
+
 		    $modlink = "<a class='' title='[Modify Document] "._RILASCIO.date("j.m.y",filemtime("$dpath/$filename"))." - "._SIZE_FILE.round(filesize("$dpath/$filename")/1000)."Kb"."' onClick='visualizza(\"$viewlink\");'><span class=''></span></a>";
 		    $downlink = "<div  id='divdownloadfile$filename'><button style='border: 1px solid #AAAAAA; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:5px; padding-left:5px; background-color: #EEEEEE; color: #000000; font-weight:bold; font-size: 12px;' align='center' onclick=\"location='$actionlink&action=download'\" title='[Download: $filename]'>$filename</button></div>";
 
 		    echo "</td>";
 		    echo "<td align='justify' valign='top'>";
+		    //echo "<font class='grey_bold'>"._NOME_FILE." </font>";
 	       // Admin mini panel
 		    if ($utente!=""){
 			if ($radiostream!="") { echo "<div  id='divradiostreamfile$filename'><span class=''> $radiostream  $div_vedi_file <!-- $vedi_file  $modlink $cut_file $rename_file $delete_file --> </span></div>";} else { echo "<table><tr><td width='20%'>$ascolta_file</td></tr></table><span class=''> <td>$vedilink</td><td width='100%'>$downlink</td> <td width='100%'>$div_vedi_file</td><!-- $div_vedi_file $vedi_file  $modlink $cut_file $rename_file $delete_file --> </span>"; }
+//		    	echo "<button style='border: 1px solid #41A317; border-radius: 3px 3px 3px 3px; padding-top:8px; padding-bottom:8px; padding-right:25px; padding-left:25px; background-color: #41A317; color: #FFFFFF; font-weight:bold; font-size: 12px;' align='center' onclick=\"location='$actionlink&action=download'\" title='[Download: $filename]'>[Down: $filename]</button>";
  		    }
 		    if ( filemtime("$dpath/$filename")> mktime (0,0,0,date("m"),date("d")-5,  date("Y"))){
 		    }
+
+// questo non posso toglierlo altrimenti viene fuori la descrizione della cartella
+		    if(strtolower(substr($filename,-4))<>".lnk"){
+//			echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$ico <font class='grey_bold'>"._SIZE_FILE." </font>".round(filesize("$dpath/$filename")/1000)."Kb ";
+		    }
+		    else
+//			echo "&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp$ico <font class='grey_bold'>"._FILE_REMOTO." </font>";
+// questo non posso toglierlo altrimenti viene fuori la descrizione della cartella
+
 		    $dpath1="$dpath/$filename";
+
+		    if(file_exists("$dpath1.updateby.description")){
+			if(filesize("$dpath1.updateby.description")>1){
+			  //  echo "<br>$ico <font class='grey_bold'>"._UPDATEBY." </font>";
+			    $updateby=trim(join(file("$dpath1.updateby.description")));
+			  //  echo"<a href='forum/index.php?op=profile&amp;user=$updateby'>$updateby</a>";
+			}
+		    }
+		    if(file_exists("$dpath1.version.description")){
+			if(filesize("$dpath1.version.description")>1){
+			  //  echo "<br>$ico <font class='grey_bold'>"._VERSION." </font>";
+
+			  //  readfile("$dpath1.version.description");
+			}
+		    }
+
+		    if(file_exists("$dpath1.description")){
+			if(filesize("$dpath1.description")>1){
+			    //echo "<br>&nbsp&nbsp&nbsp&nbsp&nbsp$ico <font class='grey_bold'> "._DESCRIPTION."</font> ";
+			    //readfile("$dpath1.description");
+			    echo "<br>";
+			}
+		    }
+
+// carica lightbox per la visualizzazione delle immagini //
+echo "<script src=\"../../applications/$appname/js/lightbox2.05/js/lightbox_plus.js\" type=\"text/javascript\"></script>";
+echo "<link rel=\"stylesheet\" href=\"../../applications/$appname/js/lightbox2.05/css/gallery.css\" type=\"text/css\" media=\"screen\" />";
+//------------------------------------------------------ //
+
 		    echo"</td>";
 		    echo "<td align='center' valign='center' width='20%' style='padding:3'> $vedi_file";
 		    echo "</td>";
@@ -1907,10 +2410,14 @@ $estensione=substr($filename,-4);
     }
     }
  // Clipboard
+
     if ($utente!=""){
 	echo "<br>";
+
 	echo "<table width='100%' style='position:relative; top: -25px;' ><tr><td class='clipboard_title'>&nbsp;<img src='../../applications/$appname/none_images/icon2.gif' border='0'> <font class='black_bold'>Clipboard:</font>&nbsp <img src='../../applications/$appname/none_images/mini_down.gif' align='absmiddle' border='0'> ["._UPDATE_FILES."] ";
 	echo "</td></tr></table>";
+
+
 	foreach(listdir("$updatedir/") as $filename){
 	    if ($filename[0]!='.'){
 		if (is_dir("$updatedir/$filename")==true){
@@ -1958,6 +2465,8 @@ $estensione=substr($filename,-4);
 			$picture="<img src='../../applications/$appname/none_images/unknown.png' border='0' width='42' height='42'>";
 		    if (substr($filename,-2)=="gz")
 			$picture="<img src='../../applications/$appname/none_images/tgz.png' border='0' width='42' height='42'>";
+		    if (substr($filename,-2)=="js")
+			$picture="<img src='../../applications/$appname/none_images/js.png' border='0' width='42' height='42' >";
 
 		    if ( strtolower(substr($filename,-4))=="docx")
 			$picture="<img src='../../applications/$appname/none_images/docx.png' border='0' width='42' height='42' >";
@@ -1968,6 +2477,7 @@ $estensione=substr($filename,-4);
 		    $preview="";
 		    if (strtolower(substr($filename,-3))=="png" || strtolower(substr($filename,-3))=="gif" || strtolower(substr($filename,-3))=="jpg" || strtolower(substr($filename,-3))=="ico"|| strtolower(substr($filename,-4))=="jpeg")
 			$preview="$updatedir/$filename";
+
 
 		    echo "<table width='100%' border='0' style='position:relative; top: -25px;'>";
 		    echo "<tr>";
@@ -1983,6 +2493,7 @@ $estensione=substr($filename,-4);
 		    	echo "<a ><img src='../../applications/$appname/none_images/".$ext[substr($filename,-3)]."' border='0' width='42' height='42'></a>";
 
 		    echo "</td>";
+
 		    //echo "$picture";
 		    echo "</td>";
 		    echo "<td align='center' valign=center style='padding-right:20;'>";
@@ -2000,9 +2511,12 @@ $estensione=substr($filename,-4);
 			echo "<br><font class='black'> - "._FILE_REMOTO." </font></td>";
 
 		    $dpath1="$updatedir/$filename";
+		   // echo " - <font class='black'>"._UPDATEBY." </font>";
 
 			echo "<td><span class='admin_panel'>$delete_file $update_file</span></td>";
+
 		    echo "";
+			//if ($preview!="")echo "<td align='left'><a href='$preview' ><img src='$preview' border='0' width='84'/></a></td>";
 		    echo "</tr></table></div>";
 			echo "</td></tr></table>";
 	    }
@@ -2012,6 +2526,7 @@ $estensione=substr($filename,-4);
     }
 }
 //__________________________________________________________________________________________________________________________________
+
 //protezione da path "strani"
 if($dpath[0]=='.' &&$dpath[1]!='.')$dpath="../../users/$utente/$cartella/LibreOfficeWebData/";
 if($dpath=='..')$dpath="../../users/$utente/$cartella/LibreOfficeWebData/";
@@ -2027,7 +2542,9 @@ if ($dpath=="../../users/$utente/$cartella/")$dpath="../../users/$utente/$cartel
 if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOfficeWebData/";
 if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOfficeWebData/";
 
+
     if ($utente!=""){
+
     $constants=get_defined_constants();
     $menutitle=$constants["_".strtoupper($action)];
 	echo "<table border='0' width='100%'><tr><td valign='top'>";
@@ -2045,8 +2562,9 @@ if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOf
 <?
 		//dirtitle($dpath);
 		echo "</div></div>";
-       }
+    }
     echo "</td>";
+
 // l'albero degli eventi
     switch($action){
 	case "download":
@@ -2153,4 +2671,5 @@ if ($dpath=="../../users/$utente/")$dpath="../../users/$utente/$cartella/LibreOf
 	    break;
     }
     }
+
 ?>
