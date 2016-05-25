@@ -164,6 +164,69 @@ margin: 5mm;
 
 }
 
+//__________________________________________________________________________________________________________________________________
+/**
+ * La funzione predispone in modifica un documento writer
+ *
+ * @author FW-TEAM
+ * @version 20070422
+ * @since   20070422
+ * @param 
+ * @param 
+ */
+function mod_file_docx($dpath){
+$utente=$_COOKIE["utente"];
+$cartella=$_COOKIE["cartella"];
+$user_avatar=$_COOKIE['user_avatar'];
+//$dpath="../../../users/".$utente."/".$cartella."/LibreOfficeWebData/";
+
+//$progetto=$_GET["progetto"];
+//$progetto1=$_POST["progetto"];
+
+//$dpath=$dpath.$progetto1;
+$editor=$_POST['editor'];
+
+$fp=fopen($dpath."","r+");fwrite($fp, $editor);fclose($fp);
+
+echo "<span style=\"position: fixed; top: -10px; left: 220px; z-index: 100;\" ><h3><b>$dpath</b></h3></span>";
+echo "
+<br><br>
+</head>
+<body>
+			<form name='savefile' enctype='multipart/form-data' action='index.php?dpath=$dpath&action=mod_file_docx' method='post'>
+				<textarea id='editor' name='editor' style='width: 100%; height: 297mm;'>";
+				echo join(file("$dpath"));
+echo "				</textarea>
+			</form>
+<script>
+	initSample();
+</script>
+<style>
+body {
+font-family: sans-serif, Arial, Verdana, \"Trebuchet MS\";
+width: 210mm;
+height: 297mm;
+background-color: #EAF2F8;
+/*margin: 17mm;
+padding-left: 10mm;*/
+        margin-left:auto;
+        margin-right:auto;
+}
+
+@page {
+size: landscape;
+width: 297mm;
+height: 210mm;
+margin: 5mm;
+}
+</style>
+</body>
+</html>
+";
+
+}
+
+
 
 ?>
 
@@ -849,6 +912,8 @@ $dpath=$_GET["dpath"];
 	case "add_new_file_docx":
 	    add_new_file_docx($dpath);
 	    break;
+	case "mod_file_docx":
+	    mod_file_docx($dpath);
 	case "add_new_file_xlsx":
 	    add_new_file_xlsx($dpath);
 	    break;
