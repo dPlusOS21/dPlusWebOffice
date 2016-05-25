@@ -696,6 +696,10 @@ var trovaxlsx = viewlink.indexOf("xlsx"); // Ricerca un carattere nella stringa
 var trovappt = viewlink.indexOf("ppt"); // Ricerca un carattere nella stringa
 //var trovamdb = viewlink.indexOf("mdb"); // Ricerca un carattere nella stringa
 //if ((trovapdf != -1) || (trovaodp != -1) || (trovaods != -1) || (trovaodt != -1) || (trovaodg != -1) || (trovadoc != -1) || (trovaxls != -1) || (trovadocx != -1) || (trovaxlsx != -1) || (trovappt != -1) || (trovamdb != -1))
+if ((trovadoc != -1) || (trovaxls != -1) || (trovadocx != -1) || (trovaxlsx != -1))
+{
+	location.href=""+viewlink+""; return;
+}
 if ((trovapdf != -1) || (trovaodp != -1) || (trovaods != -1) || (trovaodt != -1) || (trovaodg != -1) || (trovadoc != -1) || (trovaxls != -1) || (trovadocx != -1) || (trovaxlsx != -1) || (trovappt != -1))
 {
     //window.alert("Il carattere è presente: "+viewlink+""); // trovato
@@ -2278,7 +2282,8 @@ $estensione=substr($filename,-4);
 	    break;
 	case "docx":
 	    //$viewlink="http://docs.google.com/viewer?embedded=true&url=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con google document viewer online
-	    $viewlink="https://view.officeapps.live.com/op/view.aspx?src=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con microsoft document viewer online
+	    //$viewlink="https://view.officeapps.live.com/op/view.aspx?src=".$_SERVER['SERVER_NAME'].base_path().$dpath.$filename.""; // con microsoft document viewer online
+	    $viewlink="".base_path()."Writer/index.php?dpath=../".$dpath.$filename."&action=mod_file_docx";
 	    break;
     }
 
