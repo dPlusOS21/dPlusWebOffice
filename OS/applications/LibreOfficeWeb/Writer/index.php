@@ -188,7 +188,10 @@ $editor=$_POST['editor'];
 
 $fp=fopen($dpath."","r+");fwrite($fp, $editor);fclose($fp);
 
-echo "<span style=\"position: fixed; top: -10px; left: 220px; z-index: 100;\" ><h3><b>$dpath</b></h3></span>";
+$pos = strripos($dpath, "/");
+$nome = substr($dpath, $pos+1);
+
+echo "<span style=\"position: fixed; top: -10px; left: 220px; z-index: 100;\" ><h3><b>$nome</b></h3></span>";
 echo "
 <br><br>
 </head>
